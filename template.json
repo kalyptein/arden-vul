@@ -1,0 +1,101 @@
+{
+  "Actor": {
+    "types": ["character", "npc", "party"],
+
+    "templates": {
+
+      "base": {
+        "description": "",
+        "notes": "",
+        "tags": [],
+        "lock": false
+      },
+
+      "baseEntity": {
+        "strength": {
+          "base": 10
+        },
+        "dexterity": {
+          "base": 10
+        },
+        "constitution": {
+          "base": 10
+        },
+        "intelligence": {
+          "base": 10
+        },
+        "wisdom": {
+          "base": 10
+        },
+        "charisma": {
+          "base": 10
+        },
+
+        "health": {
+          "value": 10,
+          "temp": 0,
+          "min": 0
+        },
+        "speed": {
+          "base": {
+            "min": 0,
+            "max": 40
+          }
+        }
+      }
+    },
+
+    "character": {
+      "templates": [ "base", "baseEntity" ],
+      "xp": 0
+    },
+
+    "npc": {
+      "templates": [ "base", "baseEntity" ],
+      "level": 1
+    },
+
+    "party": {
+      "templates": [ "base" ],
+      "members": []
+    }
+  },
+
+
+  "Item": {
+    "types": [ 
+      "item"
+    ],
+
+    "templates": {
+
+      "base": {
+        "group": "none",
+        "description": "",
+        "tags": [],
+        "container": {
+          "isContainer": false,
+          "expanded": false
+        },
+        "lock": false
+      },
+
+      "baseObject": {
+        "group": "item",
+        "quantity": {
+          "value": 1,
+          "min": 0,
+          "max": null
+        },
+        "unitValue": 0,
+        "unitWeight": 0,
+        "location": "None",
+        "isLoot": false
+      }
+    },
+
+    "item": {
+      "templates": [ "base", "baseObject" ]
+    }
+  }
+}

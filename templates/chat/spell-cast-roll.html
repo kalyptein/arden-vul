@@ -1,0 +1,23 @@
+<div>
+	<h3>{{ item.name }}</h3>
+	<span>Cast {{{ castNotes }}}</span>
+  <div>
+    {{#if (eq spell.hasEffect true)}}
+    <hr>
+    {{#each effects as |effect id|}}
+  	<span>Effect {{effect.id}} {{{ effect.notes }}}</span>
+  	{{{ effect.rollRender }}}
+    {{/each}}
+    {{/if}}
+
+    {{#if (and (eq spell.hasEffect true) (eq hasMagnitude true))}}
+    <br>
+    {{/if}}
+
+    {{#if (eq spell.hasMagnitude true)}}
+    <hr>
+	  <span>Magnitude {{{ magnitude.notes }}}</span>
+	  {{{ magnitude.rollRender }}}
+    {{/if}}
+  </div>
+</div>

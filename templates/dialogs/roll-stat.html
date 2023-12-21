@@ -1,0 +1,54 @@
+<form class="{{cssClass}}" autocomplete="off" xmlns="http://www.w3.org/1999/html">
+
+  <div class="grid grid-3col">
+    <div class="resource">
+      <select name="defaultStat" data-dtype="String">
+        {{#select defaultStat}}
+        {{#if (ne 'defenseBonus' defaultStat)}}
+        <option value="Vigor" data-dtype="String">Vigor</option>
+        <option value="Dexterity" data-dtype="String">Dexterity</option>
+        <option value="Wits" data-dtype="String">Wits</option>
+        <option value="Spirit" data-dtype="String">Spirit</option>
+        {{else}}
+        <option value="defenseBonus" data-dtype="String">Defense</option>
+        {{/if}}
+        {{/select}}
+      </select>
+    </div>
+    <div class="resource">
+      {{#if (ne 'defenseBonus' defaultStat)}}
+      <select name="defaultRoll" data-dtype="String">
+        {{#select defaultRoll}}
+        <option value="Bonus" data-dtype="String">Bonus</option>
+        <option value="Mod" data-dtype="String">Mod</option>
+        <option value="Save" data-dtype="String">Save</option>
+        {{/select}}
+      </select>
+      {{/if}}
+    </div>
+    <div class="resource">
+      <span>
+        <select name="adShift" data-dtype="String">
+          {{#select adShift}}
+          {{#each adLadder as |ad id|}}
+            <option value="{{id}}" data-dtype="String">{{ad}}</option>
+          {{/each}}
+          {{/select}}
+        </select>
+      </span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="resource">
+      <label class="resource-label">Modifiers</label>
+      <input type="text" name="modifiers" value="{{modifiers}}" data-dtype="String" />
+    </div>
+    <div class="resource">
+      <span class="resource-label">Rolls</span>
+      <input type="text" name="targets" value="{{targets}}" data-dtype="Number" />
+    </div>
+
+  </div>
+
+</form>
