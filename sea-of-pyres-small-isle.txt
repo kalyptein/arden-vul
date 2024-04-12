@@ -1,395 +1,219 @@
-$amount : 6
-$name : Color generator
-$author : Orteil
-$description : Used for inclusion if you ever need a random color. Read source for more info.
-$picture : img/color.png
+$community_tag
+Ancient Infrastructure
+Bad Neighbors
+Blood Feud
+Brilliant Innovation
+Broken Spirits
+Corrupt Laws
+Criminal Bosses
+Cultural Center
+Cursed Circumstances
+Decadent Locals
+Decaying Working
+Abhuman Populace
+Dueling Lords
+Enemy Within
+Faded Remnant
+Fallen Prosperity
+Foreign Enclave
+Guild Oligarchy
+Heavy Fortification
+Hidden Ruler
+Hostile Terrain
+Incompetent Leaders
+Inherited Architecture
+Inhuman Cooperation
+Lawless Class
+Magical Academy
+Martial Tradition
+Miserable Penury
+Mistreated Blighted
+Monstrous Tribute
+Neglectful Ruler
+New Industry
+Pilgrimage Site
+Plagued City
+Population Boom
+Raider Scourge
+Rebel Stronghold
+Rigid Castes
+Scars of War
+Seat of Rule
+Secret Treachery
+Sinking City
+Theocratic Authorities
+Toxic Economy
+Trade Hub
+Unique Product
+Upstart Faith
+Warring Council
+Widespread Prosperity
+Xenophobic Locals
+ 
+$wilderness_tag
+Abandoned Village
+Ancient Guardians
+Ancient Monument
+Arratu Land
+Bandit Lair
+Beast Swarm
+Blighted Tribe
+Broken Infrastructure
+Chokepoint
+Collapsed Deep
+Criminal Meet
+Cryptic Art
+Cursed Land
+Decayed Working
+Abhuman Community
+Devil Grove
+Disused Mine
+Healing Terrain
+Hermitage
+Historical Survival
+Isolated Academy
+Labyrinthine Tangle
+Lost Battlefield
+Lost City
+Magical Springs
+Migration Path
+Military Outpost
+Monstrous Beast
+Motherlode
+Nomad Camp
+Eldritch / Outsider Enclave
+Overgrown Tomb
+Perilous Path
+Pilgrimage Site
+Precious Game
+Rampant Experiment
+Refugee Camp
+Remnant Road / Port
+Remote Monastery
+Ruined Fortification
+Savage Hamlet
+Sculpted Terrain
+Seductive Peril
+Taboo Territory
+Toxic Ruins
+Treacherous Terrain
+Twisted Fauna
+Uncanny Weather
+Working Wreckage
+Zealot Colony
+ 
+$ruin_tag
+Ancient Archives
+Aspiring Conqueror
+Automaton Servants
+Birthing Cyst
+Bitter Remnants
+Civil War
+Cyclical Doom
+Decrepit Structure
+Desperate Hunger
+Dire Tombs
+Distant Gate
+Dungeon Heart
+Experimental Lab
+Failed Intrusion
+Fallen Sanctuary
+False Front
+Feral Magic
+Flooded Halls
+Freshly Looted
+Friendly Foes
+Hidden Within
+Hiveminded Natives
+Hospitable Natives
+Hostile Environment
+Infectious Miasma
+Invincible Delusion
+Lethal Treasure
+Limited Access
+Lingering Curse
+Living Dungeon
+Lost Colony
+Magical Wonder
+Monster Forge
+Outsider Domain
+Precious Resource
+Raider Lair
+Recruiting Drive
+Religious Zealots
+Rigid Hierarchy
+Royal Refuge
+Sacrificial Bargain
+Sealed Evil
+Secret Alliance
+Shifting Interior
+Spatial Flux
+Surfacer Hideout
+Taboo Place
+Things Below
+Useless Treasure
+Wizard's Lair
+ 
+$court_tag
+Affliction's Mark
+Ancestral Obligation
+Awesome Legitimacy
+Awkward Birth
+Blandished Leadership
+Cadet Branches
+Capricious Orders
+Cultural Insignia
+Daring Ambition
+Dark Secret
+Decadent Court
+Devil's Bargain
+Diplomatic Demands
+Disputed Inheritance
+Excess Heirs
+False Prize
+Fatal Extravagance
+Forbidden Romance
+Foreign Ties
+Gate Keeper
+Hidden Blight
+Hopeless Rival
+Impure Blood
+Inadequate Tools
+Inept Ruler
+Iron Law
+Lost Purpose
+Magical Subversion
+Ministerial Capture
+New Generation
+New Opportunity
+Outside Debts
+Overextended Grasp
+Poisonous Cliques
+Priestly Influence
+Proxy Speaker
+Rampant Corruption
+Recent Brutality
+Regency Council
+Restive Lessers
+Rival Dreams
+Rival Power
+Ruling Regalia
+Runaway Rule
+Shining Successor
+Splendid Seat
+Sublime Skill
+Sudden Strength
+Threatened Violence
+Waning Wealth
 
-//idea for improvement : add {metaphor} properties to some (all) colors, such as "blue {metaphor:[the sky|the sea]}
+$>wilderness
+[wilderness_tag]
 
-$basic color
-blue
-green
-yellow
-orange
-red
-purple
-white
-grey
-blue
-pink
-brown
+$>community
+[community_tag]
 
-//http://www.colourlovers.com/blog/2007/07/24/32-common-color-names-for-easy-reference
-$complex color
-ivory
-beige
-wheat
-tan
-khaki
-silver
-charcoal
-navy blue
-royal blue
-medium blue
-azure
-cyan
-aquamarine
-teal
-forest green
-olive
-chartreuse
-lime
-golden
-goldenrod
-coral
-salmon
-hot pink
-fuchsia
-puce
-mauve
-lavender
-plum
-indigo
-maroon
-crimson
+$>ruin
+[ruin_tag]
 
-
-//fancy colors painstakingly compiled from http://en.wikipedia.org/wiki/Category:Shades_of_color and some other synonyms
-//were omitted : any terms that are too geographically/historically connoted or just too convoluted
-
-$white
-white
-ghost white
-snowy
-ivory
-floral white
-seashell
-cream
-beige
-linen
-antique white
-eggshell
-bone
-vanilla
-flax
-ecru
-alabaster
-bleached
-fair
-pearly
-chalky
-waxen
-ashen
-pale
-light
-
-$gray
-light gray
-silvery
-medium gray
-dark medium gray
-gray
-dim gray
-jet
-platinum
-ash gray
-charcoal
-cool gray
-blue-gray
-glaucous
-slate gray
-puce
-rose quartz
-cinereous
-taupe
-oyster
-peppery
-smoky
-ashen
-dusky
-shaded
-drab
-mousy
-
-$black
-midnight blue
-dim gray
-ebony
-taupe
-charcoal
-onyx
-jet
-licorice
-coal
-obsidian
-somber
-sooty
-
-$red
-red
-pink
-salmon
-coral
-imperial red
-ruby
-crimson
-rusty
-cardinal
-brick
-dark red
-maroon
-rose
-blood
-carmine
-cherry
-claret
-burgundy
-copper
-fuchsia
-garnet
-magenta
-puce
-russet
-rust
-sanguine
-titian
-vermilion
-
-$green
-green
-bottle green
-bright green
-celadon
-emerald
-yellow-green
-blue-green
-jade
-malachite
-midnight green
-sea green
-grassy
-leafy
-verdant
-olive
-beryl
-chartreuse
-verdigris
-viridian
-
-$blue
-blue
-periwinkle
-powder blue
-light blue
-baby blue
-medium blue
-ultramarine
-dark blue
-navy blue
-midnight blue
-turquoise
-blue-green
-azure
-beryl
-cerulean
-cobalt
-indigo
-royal blue
-sapphire
-teal
-turquoise
-blue-gray
-
-$yellow
-yellow
-light yellow
-cream
-lemon
-mellow yellow
-royal yellow
-gold
-khaki
-goldenrod
-olive
-amber
-bisque
-blond
-buff
-ivory
-saffron
-sand
-tawny
-
-$cyan
-cyan
-light cyan
-aero blue
-celeste
-electric blue
-turquoise
-light sea green
-blue-green
-keppel
-cerulean
-dark cyan
-teal
-midnight green
-aquamarine
-
-$pink
-pink
-piggy pink
-pale pink
-baby pink
-orchid
-light hot pink
-lavender pink
-carnation pink
-amaranth pink
-charm pink
-pastel punk
-solid pink
-silver pink
-pink lavender
-dark pink
-paradise pink
-rose
-coral
-salmon
-fuchsia
-flesh
-steel pink
-sky magenta
-plum
-dark magenta
-magenta
-hot magenta
-
-$purple
-mauve
-lavender
-lilac
-plum
-periwinkle
-amethyst
-magenta
-amaranthine
-thistle
-heliotrope
-mulberry
-pearly purple
-blue-violet
-violet
-
-$orange
-orange
-dark orange
-light orange
-peach
-apricot
-melon
-carrot
-tangerine
-pumpkin
-persimmon
-salmon
-tangerine
-titian
-coral
-
-$brown
-brown
-beige
-buff
-chestnut
-sandy brown
-khaki
-umber
-russet
-tan
-taupe
-wood brown
-fawn
-amber
-bister
-brick
-cinnamon
-copper
-drab
-ecru
-hazel
-tawny
-auburn
-sepia
-puce
-
-
-$fancy color
-[white]
-[gray]
-[black]
-[red]
-[green]
-[blue]
-[yellow]
-[cyan]
-[pink]
-[purple]
-[orange]
-[brown]
-
-
-$automatic color
-[[bright|dark|light|pale|neon|pastel|midnight|pure|vibrant|medium] |][white|gray|black|red|green|blue|yellow|cyan|pink|purple|orange|brown]
-
-
-//not including dyes; weighted rather liberally
-$hair color
-black
-dark {50%}
-brown
-light brown {30%}
-chestnut {50%}
-auburn {50%}
-blond
-platinum {10%}
-golden {20%}
-white {50%}
-grey {50%}
-salt-and-pepper {20%}
-
-$skin color
-albino {1%}
-white
-pale
-light
-fair
-light brown
-olive
-tan
-copper
-brown
-dark brown
-black
-
-$eye color
-amber
-blue
-brown
-gray
-green
-hazel
-
-$random color
-[basic color] {20%}
-[complex color]
-
-$any color
-[random color]
-[fancy color]
-
-$color
-[any color]
-
-$color formatted output
-<big>[Color]</big>
+$>court
+[court_tag]
