@@ -1,0 +1,103 @@
+$include https://pastebin.com/raw/g6k41XA5
+ 
+$name : Red Age - Sea of Pyres: small isle
+$author : Kalyptein
+$description : Red Age - Sea of Pyres: small isle
+$amount : 1
+$picture : 
+$button : "Generate"
+ 
+ 
+$isle_type
+Steaming Rock (newly made, minor lord or wild powers, still pretty volcanic)
+Atoll (coral-based, within the domain of the Firstborn)
+Living Rock (normal island lord isle, just small)<br>- [island_lord]
+Living Rock (normal island lord isle, just small)<br>- [island_lord]
+Old Rock (island lord dead / gone / dormant)
+Old Rock (island lord dead / gone / dormant)
+Normal Islet (non-coral, non-volcanic origins)
+Sargasso Isle (made of vegetation, either of sea origin or broken free from some verdant isle)
+ 
+$lord_power
+old and puissant
+old and fading
+mature
+mature
+rising
+young / weak
+ 
+$lord_cycle
+Verdant, but rumbling toward an eruption soon (plume, occasional ash)
+Verdant, but rumbling toward an eruption soon (plume, occasional ash)
+Currently erupting (gently or violently)
+Eruption dying away, cinder fields, dead isle, ashes and lava and obsidian
+Life in the process of retaking the isle, still regions of volcanic ruin
+Verdant isle
+Verdant isle
+Wildly overgrown isle, will need a clearing sooner or later, chokingly full of life, decay, etc
+ 
+$lord_type
+terrestrial
+terrestrial
+terrestrial
+terrestrial
+half-xeno
+xeno
+ 
+$habitation
+Inhabited<br>- [inhabitants]<br>- [habitation_type]<br>- [community_tag]<br>- [community_tag]
+Uninhabited
+Uninhabited
+ 
+$habitation_type
+village (farming, fishing, or other harvesting)
+periodic encampment (seasonal harvesting, unmanned waystation, pilgrimage camp, castaways)
+bastion (fort, hideout, vault, prison)
+waystation (trading post, logistics base, basecamp for voyages or investigating something local)
+seclusium (shrine, mage tower, hermitage)
+[habitation_type] & [habitation_type]
+ 
+$inhabitants
+Salter
+Salter
+Salter
+Three Cities
+Nilamese ([long coaster and rain peaks|long coaster|rain peaks])
+[Rare Group|Polyglot (salters, yawari, njerezim, ba ulati, nilamese, etc)|Polyglot (salters, yawari, njerezim, ba ulati, nilamese, etc)]
+ 
+$origin
+Green Age [origin_green]
+Yellow Age [origin_yellow]
+Red Age [origin_red]
+ 
+$origin_green
+Chendrezen
+Ascendancy
+Irata Nilam
+Old Taoeen
+Theomachinate
+Distant Outsiders / Eldritch / Blue Age
+ 
+$origin_yellow
+Pre-Starfall Salter
+Pre-Starfall Salter
+Hekuri
+Decadent Nilamese
+Three Cities
+ 
+$origin_red
+Modern Salter
+Modern Salter
+Modern Salter
+Modern Salter
+Modern Salter
+Long Coasters
+Rain Peaks
+Three Cities
+ 
+ 
+$>island_lord
+Island Lord: [lord_power] [lord_type] ([lord_cycle])
+ 
+$>small_isle
+[isle_type]<br><br>[habitation]<br><br>[origin]<br><br>[wilderness_tag]<br>[wilderness_tag]
