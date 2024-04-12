@@ -1,97 +1,395 @@
-$name : Cookie Generator
+$amount : 6
+$name : Color generator
 $author : Orteil
-$description : Generates a delicious random cookie.
-$amount : 4
-$picture : http://s1.postimg.org/hr8yzlt23/cookie.png
-$button : Bake!
+$description : Used for inclusion if you ever need a random color. Read source for more info.
+$picture : img/color.png
 
-$chocolate
-dark chocolate
-white chocolate
-milk chocolate
+//idea for improvement : add {metaphor} properties to some (all) colors, such as "blue {metaphor:[the sky|the sea]}
 
-$cookie flavor
-plain
-sugar
-butter
-almond {15%}
-cinnamon {15%}
-ginger {5%}
-tea {5%}
-coffee {5%}
-vanilla {5%}
-[chocolate]
-[fruit]
+$basic color
+blue
+green
+yellow
+orange
+red
+purple
+white
+grey
+blue
+pink
+brown
 
-$fruit
-lemon
+//http://www.colourlovers.com/blog/2007/07/24/32-common-color-names-for-easy-reference
+$complex color
+ivory
+beige
+wheat
+tan
+khaki
+silver
+charcoal
+navy blue
+royal blue
+medium blue
+azure
+cyan
+aquamarine
+teal
+forest green
+olive
+chartreuse
 lime
-blueberry
-cherry
-strawberry
-raspberry
-coconut
-apricot
-peach
-pineapple
-banana
-mint
-grape
-rose {30%}
-carrot {30%}
-pumpkin {30%}
+golden
+goldenrod
+coral
+salmon
+hot pink
+fuchsia
+puce
+mauve
+lavender
+plum
+indigo
+maroon
+crimson
 
-$nuts
-macadamia nuts
-hazelnuts
-walnuts
-coconut
-pecan
 
-$chocolate chips
-[chocolate] chips
-[chocolate] chunks
+//fancy colors painstakingly compiled from http://en.wikipedia.org/wiki/Category:Shades_of_color and some other synonyms
+//were omitted : any terms that are too geographically/historically connoted or just too convoluted
 
-$cookie filling
+$white
+white
+ghost white
+snowy
+ivory
+floral white
+seashell
 cream
-[fruit] jam
-[fruit] jelly
-[chocolate]
-liquor {30%}
+beige
+linen
+antique white
+eggshell
+bone
+vanilla
+flax
+ecru
+alabaster
+bleached
+fair
+pearly
+chalky
+waxen
+ashen
+pale
+light
 
-$cookie shape
-square
-rectangular
-[round|oval]
-[animal-shaped|star-shaped|spiral-shaped|triangle-shaped|spiral-shaped|swirly|flower-shaped] {40%}
-lumpy {10%}
+$gray
+light gray
+silvery
+medium gray
+dark medium gray
+gray
+dim gray
+jet
+platinum
+ash gray
+charcoal
+cool gray
+blue-gray
+glaucous
+slate gray
+puce
+rose quartz
+cinereous
+taupe
+oyster
+peppery
+smoky
+ashen
+dusky
+shaded
+drab
+mousy
 
-$cookie modifier
-it has sprinkles on it
-it has [pink|blue|white|red|orange|yellow] [frosting|icing] on it
-[it has an interesting pattern|it has a little drawing on it]
-it is filled with [cookie filling]
-it is topped with [cookie filling]
-it is coated in [chocolate]
-it is [very] [plump|chewy|crumbly|brittle|soft|spongy]
-it goes well with [coffee|tea|milk|juice]
+$black
+midnight blue
+dim gray
+ebony
+taupe
+charcoal
+onyx
+jet
+licorice
+coal
+obsidian
+somber
+sooty
 
-$cookie augments
-with [nuts]
-with [chocolate chips]
-with [nuts] and [chocolate chips]
+$red
+red
+pink
+salmon
+coral
+imperial red
+ruby
+crimson
+rusty
+cardinal
+brick
+dark red
+maroon
+rose
+blood
+carmine
+cherry
+claret
+burgundy
+copper
+fuchsia
+garnet
+magenta
+puce
+russet
+rust
+sanguine
+titian
+vermilion
 
-$very
-pretty
-rather
-very
-fairly
-kind of
-somewhat
+$green
+green
+bottle green
+bright green
+celadon
+emerald
+yellow-green
+blue-green
+jade
+malachite
+midnight green
+sea green
+grassy
+leafy
+verdant
+olive
+beryl
+chartreuse
+verdigris
+viridian
 
-$cookie word
-cookie
-biscuit
+$blue
+blue
+periwinkle
+powder blue
+light blue
+baby blue
+medium blue
+ultramarine
+dark blue
+navy blue
+midnight blue
+turquoise
+blue-green
+azure
+beryl
+cerulean
+cobalt
+indigo
+royal blue
+sapphire
+teal
+turquoise
+blue-gray
 
-$cookie
-[An] [cookie shape] [cookie flavor] [cookie word][| [cookie augments]]. [Cookie modifier][| and [cookie modifier]].<br><br>
+$yellow
+yellow
+light yellow
+cream
+lemon
+mellow yellow
+royal yellow
+gold
+khaki
+goldenrod
+olive
+amber
+bisque
+blond
+buff
+ivory
+saffron
+sand
+tawny
+
+$cyan
+cyan
+light cyan
+aero blue
+celeste
+electric blue
+turquoise
+light sea green
+blue-green
+keppel
+cerulean
+dark cyan
+teal
+midnight green
+aquamarine
+
+$pink
+pink
+piggy pink
+pale pink
+baby pink
+orchid
+light hot pink
+lavender pink
+carnation pink
+amaranth pink
+charm pink
+pastel punk
+solid pink
+silver pink
+pink lavender
+dark pink
+paradise pink
+rose
+coral
+salmon
+fuchsia
+flesh
+steel pink
+sky magenta
+plum
+dark magenta
+magenta
+hot magenta
+
+$purple
+mauve
+lavender
+lilac
+plum
+periwinkle
+amethyst
+magenta
+amaranthine
+thistle
+heliotrope
+mulberry
+pearly purple
+blue-violet
+violet
+
+$orange
+orange
+dark orange
+light orange
+peach
+apricot
+melon
+carrot
+tangerine
+pumpkin
+persimmon
+salmon
+tangerine
+titian
+coral
+
+$brown
+brown
+beige
+buff
+chestnut
+sandy brown
+khaki
+umber
+russet
+tan
+taupe
+wood brown
+fawn
+amber
+bister
+brick
+cinnamon
+copper
+drab
+ecru
+hazel
+tawny
+auburn
+sepia
+puce
+
+
+$fancy color
+[white]
+[gray]
+[black]
+[red]
+[green]
+[blue]
+[yellow]
+[cyan]
+[pink]
+[purple]
+[orange]
+[brown]
+
+
+$automatic color
+[[bright|dark|light|pale|neon|pastel|midnight|pure|vibrant|medium] |][white|gray|black|red|green|blue|yellow|cyan|pink|purple|orange|brown]
+
+
+//not including dyes; weighted rather liberally
+$hair color
+black
+dark {50%}
+brown
+light brown {30%}
+chestnut {50%}
+auburn {50%}
+blond
+platinum {10%}
+golden {20%}
+white {50%}
+grey {50%}
+salt-and-pepper {20%}
+
+$skin color
+albino {1%}
+white
+pale
+light
+fair
+light brown
+olive
+tan
+copper
+brown
+dark brown
+black
+
+$eye color
+amber
+blue
+brown
+gray
+green
+hazel
+
+$random color
+[basic color] {20%}
+[complex color]
+
+$any color
+[random color]
+[fancy color]
+
+$color
+[any color]
+
+$color formatted output
+<big>[Color]</big>
