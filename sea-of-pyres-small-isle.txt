@@ -1,5 +1,3 @@
-$include https://pastebin.com/raw/g6k41XA5
- 
 $name : Red Age - Sea of Pyres: small isle
 $author : Kalyptein
 $description : Red Age - Sea of Pyres: small isle
