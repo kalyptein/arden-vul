@@ -1,101 +1,97 @@
-$name : Red Age - Sea of Pyres: small isle
-$author : Kalyptein
-$description : Red Age - Sea of Pyres: small isle
-$amount : 1
-$picture : 
-$button : "Generate"
- 
- 
-$isle_type
-Steaming Rock (newly made, minor lord or wild powers, still pretty volcanic)
-Atoll (coral-based, within the domain of the Firstborn)
-Living Rock (normal island lord isle, just small)<br>- [island_lord]
-Living Rock (normal island lord isle, just small)<br>- [island_lord]
-Old Rock (island lord dead / gone / dormant)
-Old Rock (island lord dead / gone / dormant)
-Normal Islet (non-coral, non-volcanic origins)
-Sargasso Isle (made of vegetation, either of sea origin or broken free from some verdant isle)
- 
-$lord_power
-old and puissant
-old and fading
-mature
-mature
-rising
-young / weak
- 
-$lord_cycle
-Verdant, but rumbling toward an eruption soon (plume, occasional ash)
-Verdant, but rumbling toward an eruption soon (plume, occasional ash)
-Currently erupting (gently or violently)
-Eruption dying away, cinder fields, dead isle, ashes and lava and obsidian
-Life in the process of retaking the isle, still regions of volcanic ruin
-Verdant isle
-Verdant isle
-Wildly overgrown isle, will need a clearing sooner or later, chokingly full of life, decay, etc
- 
-$lord_type
-terrestrial
-terrestrial
-terrestrial
-terrestrial
-half-xeno
-xeno
- 
-$habitation
-Inhabited<br>- [inhabitants]<br>- [habitation_type]<br>- [community_tag]<br>- [community_tag]
-Uninhabited
-Uninhabited
- 
-$habitation_type
-village (farming, fishing, or other harvesting)
-periodic encampment (seasonal harvesting, unmanned waystation, pilgrimage camp, castaways)
-bastion (fort, hideout, vault, prison)
-waystation (trading post, logistics base, basecamp for voyages or investigating something local)
-seclusium (shrine, mage tower, hermitage)
-[habitation_type] & [habitation_type]
- 
-$inhabitants
-Salter
-Salter
-Salter
-Three Cities
-Nilamese ([long coaster and rain peaks|long coaster|rain peaks])
-[Rare Group|Polyglot (salters, yawari, njerezim, ba ulati, nilamese, etc)|Polyglot (salters, yawari, njerezim, ba ulati, nilamese, etc)]
- 
-$origin
-Green Age [origin_green]
-Yellow Age [origin_yellow]
-Red Age [origin_red]
- 
-$origin_green
-Chendrezen
-Ascendancy
-Irata Nilam
-Old Taoeen
-Theomachinate
-Distant Outsiders / Eldritch / Blue Age
- 
-$origin_yellow
-Pre-Starfall Salter
-Pre-Starfall Salter
-Hekuri
-Decadent Nilamese
-Three Cities
- 
-$origin_red
-Modern Salter
-Modern Salter
-Modern Salter
-Modern Salter
-Modern Salter
-Long Coasters
-Rain Peaks
-Three Cities
- 
- 
-$>island_lord
-Island Lord: [lord_power] [lord_type] ([lord_cycle])
- 
-$>small_isle
-[isle_type]<br><br>[habitation]<br><br>[origin]<br><br>[wilderness_tag]<br>[wilderness_tag]
+$name : Cookie Generator
+$author : Orteil
+$description : Generates a delicious random cookie.
+$amount : 4
+$picture : http://s1.postimg.org/hr8yzlt23/cookie.png
+$button : Bake!
+
+$chocolate
+dark chocolate
+white chocolate
+milk chocolate
+
+$cookie flavor
+plain
+sugar
+butter
+almond {15%}
+cinnamon {15%}
+ginger {5%}
+tea {5%}
+coffee {5%}
+vanilla {5%}
+[chocolate]
+[fruit]
+
+$fruit
+lemon
+lime
+blueberry
+cherry
+strawberry
+raspberry
+coconut
+apricot
+peach
+pineapple
+banana
+mint
+grape
+rose {30%}
+carrot {30%}
+pumpkin {30%}
+
+$nuts
+macadamia nuts
+hazelnuts
+walnuts
+coconut
+pecan
+
+$chocolate chips
+[chocolate] chips
+[chocolate] chunks
+
+$cookie filling
+cream
+[fruit] jam
+[fruit] jelly
+[chocolate]
+liquor {30%}
+
+$cookie shape
+square
+rectangular
+[round|oval]
+[animal-shaped|star-shaped|spiral-shaped|triangle-shaped|spiral-shaped|swirly|flower-shaped] {40%}
+lumpy {10%}
+
+$cookie modifier
+it has sprinkles on it
+it has [pink|blue|white|red|orange|yellow] [frosting|icing] on it
+[it has an interesting pattern|it has a little drawing on it]
+it is filled with [cookie filling]
+it is topped with [cookie filling]
+it is coated in [chocolate]
+it is [very] [plump|chewy|crumbly|brittle|soft|spongy]
+it goes well with [coffee|tea|milk|juice]
+
+$cookie augments
+with [nuts]
+with [chocolate chips]
+with [nuts] and [chocolate chips]
+
+$very
+pretty
+rather
+very
+fairly
+kind of
+somewhat
+
+$cookie word
+cookie
+biscuit
+
+$cookie
+[An] [cookie shape] [cookie flavor] [cookie word][| [cookie augments]]. [Cookie modifier][| and [cookie modifier]].<br><br>
