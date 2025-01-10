@@ -3,13 +3,13 @@
   "id": "arden-vul",
   "title": "Arden-Vul",
   "description": "Arden-Vul game for Foundry VTT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minimumCoreVersion": "10",
-  "compatibleCoreVersion": "11",
+  "compatibleCoreVersion": "13",
   "compatibility": {
       "minimum": "10",
-      "verified": "11",
-      "maximum": "11"
+      "verified": "13",
+      "maximum": "13"
   },
   "author": "Demiurge World Construction Unlimited",
   "authors": [
