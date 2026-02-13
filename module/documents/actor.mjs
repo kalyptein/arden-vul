@@ -35,33 +35,33 @@ export class AVActor extends Actor {
   /** @override */
   prepareBaseData() {
     // Data modifications in this step occur before processing embedded documents or derived data.
-    const sys = this.system;
+    // const sys = this.system;
 
-    switch (this.type) {
-      case 'character':
-        // stats
-        AV.STATS.forEach(stat => {
-          sys[stat].value = modCalc(sys[stat].base);
-        });
+    // switch (this.type) {
+    //   case 'character':
+    //     // stats
+    //     AV.STATS.forEach(stat => {
+    //       sys[stat].value = modCalc(sys[stat].base);
+    //     });
 
-        // find and process class
-        var charClass = this.system.items.filter(item => item.type == "class").at(0);
-        if (charClass !== undefined) {
-          // determine level based on xp and class's array of thresholds
-          let level = 1;
-          let attack = 0;
-          sys.class = { level: level, name: charClass.name, type: charClass.sys.group, HD: charClass.sys.HD, heroicHP: charClass.sys.heroicHP, attack: attack };
-          // determine base attack bonus
-          // determine base hp
-          // determine HD
-          // determine base saves
-        }
-        break;
-      case 'npc':
-        break;
-      case 'party':
-        break;
-    }
+    //     // find and process class
+    //     var charClass = this.system.items.filter(item => item.type == "class").at(0);
+    //     if (charClass !== undefined) {
+    //       // determine level based on xp and class's array of thresholds
+    //       let level = 1;
+    //       let attack = 0;
+    //       sys.class = { level: level, name: charClass.name, type: charClass.sys.group, HD: charClass.sys.HD, heroicHP: charClass.sys.heroicHP, attack: attack };
+    //       // determine base attack bonus
+    //       // determine base hp
+    //       // determine HD
+    //       // determine base saves
+    //     }
+    //     break;
+    //   case 'npc':
+    //     break;
+    //   case 'party':
+    //     break;
+    // }
   }
 
   /** @override */
@@ -82,17 +82,17 @@ export class AVActor extends Actor {
     const sys = this.system;
     // const flags = actorData.flags.redage || {};
 
-    switch (this.type) {
-      case 'character':
-        this._prepareCharacterData(sys);
-        break;
-      case 'npc':
-        this._prepareNpcData(sys);
-        break;
-      case 'party':
-        this._preparePartyData(sys);
-        break;
-    }
+    // switch (this.type) {
+    //   case 'character':
+    //     this._prepareCharacterData(sys);
+    //     break;
+    //   case 'npc':
+    //     this._prepareNpcData(sys);
+    //     break;
+    //   case 'party':
+    //     this._preparePartyData(sys);
+    //     break;
+    // }
   }
 
   /**
