@@ -34,25 +34,25 @@ export class AVActorSheet extends ActorSheet {
     const context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
-    const actorData = context.actor.data;    
+    // const actorData = context.actor.data;
 
     // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = actorData.data;
-    context.flags = actorData.flags;
+    // context.data = actorData.data;
+    // context.flags = actorData.flags;
 
     // Prepare character data and items.
-    if (actorData.type == 'character') {
+    // if (actorData.type == 'character') {
       // this._prepareItems(context);
       // this._prepareCharacterData(context);
-    }
+    // }
 
     // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
+    // if (actorData.type == 'npc') {
       // this._prepareItems(context);
-    }
+    // }
 
     // Prepare Party data and items.
-    if (actorData.type == 'party') {
+    // if (actorData.type == 'party') {
 
       // switch (context.data.carried.loadLevel)
       // {
@@ -74,7 +74,7 @@ export class AVActorSheet extends ActorSheet {
 
       // context.gear = gear;
       // context.gearByLoc = gearByLoc;
-    }
+    // }
     
     // Add roll data for TinyMCE editors.
     // context.rollData = context.actor.getRollData();
