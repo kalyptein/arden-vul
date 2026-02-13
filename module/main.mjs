@@ -111,7 +111,7 @@ async function createItemMacro(data, slot) {
   let actor;
   if (speaker.token) actor = game.actors.tokens[speaker.token];
   if (!actor) actor = game.actors.get(speaker.actor);
-  if (actor && await REDAGE.confirm("Macro Actor", "Connect macro to '" + actor.name + "'?"))
+  if (actor && await AV.confirm("Macro Actor", "Connect macro to '" + actor.name + "'?"))
     args.push('"' + actor.name + '"');
 
   // Create the macro command

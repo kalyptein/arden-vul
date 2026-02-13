@@ -1,15 +1,15 @@
-import { REDAGE } from "../helpers/config.mjs";
+import { AV } from "../helpers/config.mjs";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class RedAgeItemSheet extends ItemSheet {
+export class AVItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["redage", "sheet", "item"],
+      classes: ["arden-vul", "sheet", "item"],
       width: 520,
       height: 480,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
@@ -18,7 +18,7 @@ export class RedAgeItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = "systems/redage/templates/item";
+    const path = "systems/arden-vul/templates/item";
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.html`;
 
@@ -49,16 +49,16 @@ export class RedAgeItemSheet extends ItemSheet {
     // context.flags = itemData.flags;
 
     // context.location = itemData.data.location;
-    // context.locations = REDAGE.ItemLocations;
+    // context.locations = AV.ItemLocations;
 
     // Iterate through items, allocating to containers (avoid container name collision w/ base location options)
     // add containers to location list, not including self, it this item is a container
     // let containers = {};
-    // actor.items.filter(i => i.data.data.tags.includes("container") && !REDAGE.ItemLocations.includes(i.name)).forEach(i => containers[i.id] = i);
+    // actor.items.filter(i => i.data.data.tags.includes("container") && !AV.ItemLocations.includes(i.name)).forEach(i => containers[i.id] = i);
     // context.containers = Object.values(containers).filter(val => context.item.id !== val.id).map(val => { return { name: val.name, id: val.id }; });
 
-    // context.spellLocations = REDAGE.SpellLocations;
-    // context.statusOrigins = REDAGE.StatusOrigins;
+    // context.spellLocations = AV.SpellLocations;
+    // context.statusOrigins = AV.StatusOrigins;
 
     // casting preparation
     // if (this.item.type === "classCaster")
@@ -83,7 +83,7 @@ export class RedAgeItemSheet extends ItemSheet {
       ev.preventDefault();
       const header = ev.currentTarget;
       const table = header.dataset.array;
-      REDAGE.pushText(this.item, table);
+      AV.pushText(this.item, table);
     });
 
     html.find(".item-text-edit").click((ev) => {
@@ -92,7 +92,7 @@ export class RedAgeItemSheet extends ItemSheet {
       const table = header.dataset.array;
       const index = header.dataset.id;
       // const text = $(ev.currentTarget).closest(".item").data("tag");
-      REDAGE.pushText(this.item, table, index);
+      AV.pushText(this.item, table, index);
     });
 
     html.find(".item-text-pop").click((ev) => {
@@ -100,7 +100,7 @@ export class RedAgeItemSheet extends ItemSheet {
       const header = ev.currentTarget;
       const table = header.dataset.array;
       const index = header.dataset.id;
-      REDAGE.popText(this.item, table, index);
+      AV.popText(this.item, table, index);
     });
 
     html.find(".item-text-up").click((ev) => {
@@ -108,7 +108,7 @@ export class RedAgeItemSheet extends ItemSheet {
       const header = ev.currentTarget;
       const table = header.dataset.array;
       const index = header.dataset.id;
-      REDAGE.moveText(this.item, table, index, -1);
+      AV.moveText(this.item, table, index, -1);
     });
 
     html.find(".item-text-down").click((ev) => {
@@ -116,7 +116,7 @@ export class RedAgeItemSheet extends ItemSheet {
       const header = ev.currentTarget;
       const table = header.dataset.array;
       const index = header.dataset.id;
-      REDAGE.moveText(this.item, table, index, 1);
+      AV.moveText(this.item, table, index, 1);
     });
 
     // Relocate item in inventory
@@ -127,14 +127,14 @@ export class RedAgeItemSheet extends ItemSheet {
 
       let loc = ev.currentTarget.value;
       let containers = {};
-      item.actor.items.filter(i => i.data.data.tags.includes("container") && !REDAGE.ItemLocations.includes(i.id)).forEach(i => containers[i.id] = i);
+      item.actor.items.filter(i => i.data.data.tags.includes("container") && !AV.ItemLocations.includes(i.id)).forEach(i => containers[i.id] = i);
 
       // walk up the layers of containment, failing in relocation if more than depth 10 passes, or you reach yourself (recursive placement) or an undefined holder
       let thisLocation = loc;
       let validRelocation = false;
       for (let cnt=0; cnt < 10 && thisLocation !== item.id && thisLocation !== undefined; cnt++) {
         // if we've reached a base location, allow the relocation
-        if (REDAGE.ItemLocations.includes(thisLocation)) { validRelocation = true; break; }
+        if (AV.ItemLocations.includes(thisLocation)) { validRelocation = true; break; }
 
         if (containers[thisLocation] !== undefined) { thisLocation = containers[thisLocation].data.data.location; } else { thisLocation = undefined; }
       }

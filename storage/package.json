@@ -1,7 +1,7 @@
 {
-  "name": "redage",
+  "name": "arden-vul",
   "version": "1.0.0",
-  "description": "CSS compiler for the RedAge system",
+  "description": "CSS compiler for the Arden-Vul system",
   "scripts": {
     "build": "gulp build",
     "compile": "gulp css",

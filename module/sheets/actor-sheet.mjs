@@ -1,5 +1,5 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
-import { AV } from "/systems/redage/module/helpers/config.mjs";
+import { AV } from "/systems/arden-vul/module/helpers/config.mjs";
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -65,11 +65,11 @@ export class AVActorSheet extends ActorSheet {
       // }
   
       // const gear = context.items.filter((i) => i.data.group === "item");
-      // gear.forEach(item => { item.data.locations = REDAGE.ItemLocations; });
+      // gear.forEach(item => { item.data.locations = AV.ItemLocations; });
       // const gearByLoc = {
-      //   Equipment: gear.filter((i) => !i.data.isLoot && i.data.location !== REDAGE.INV_TOWN),
-      //   Treasure: gear.filter((i) => i.data.isLoot && i.data.location !== REDAGE.INV_TOWN),
-      //   Town: gear.filter((i) => i.data.location === REDAGE.INV_TOWN)
+      //   Equipment: gear.filter((i) => !i.data.isLoot && i.data.location !== AV.INV_TOWN),
+      //   Treasure: gear.filter((i) => i.data.isLoot && i.data.location !== AV.INV_TOWN),
+      //   Town: gear.filter((i) => i.data.location === AV.INV_TOWN)
       // };
 
       // context.gear = gear;
@@ -98,13 +98,13 @@ export class AVActorSheet extends ActorSheet {
     // Highlight load level and supply tooltip
     switch (context.data.carried.loadLevel)
     {
-    case REDAGE.LOAD_LIGHT: context.data.carried.color = "blue";
+    case AV.LOAD_LIGHT: context.data.carried.color = "blue";
       context.data.carried.tooltip = "";
       break;
-    case REDAGE.LOAD_MEDIUM: context.data.carried.color = "green";
+    case AV.LOAD_MEDIUM: context.data.carried.color = "green";
       context.data.carried.tooltip = "+D to swimming, climbing, jumping, and acrobatics";
       break;
-    case REDAGE.LOAD_HEAVY: context.data.carried.color = "yellow";
+    case AV.LOAD_HEAVY: context.data.carried.color = "yellow";
       context.data.carried.tooltip = "+D to Dex and Vigor stat, save, attack, and effect checks\n+D to initiative\nSlowed\nCan't swim";
       break;
     default: context.data.carried.color = "red";
@@ -128,8 +128,8 @@ export class AVActorSheet extends ActorSheet {
     var fpSpent = this._calculateFeatPoints(context.items);
 		var fp = { value: fpSpent.basic.spent };
     context.data.featPoints.basic = fp;
-    let mundaneFP = Math.floor(Math.min(context.data.characterLevel, REDAGE.HeroicLevelThreshold) / 2);
-    let heroicFP = (context.data.characterLevel - REDAGE.HeroicLevelThreshold > 0) ? context.data.characterLevel - REDAGE.HeroicLevelThreshold : 0;
+    let mundaneFP = Math.floor(Math.min(context.data.characterLevel, AV.HeroicLevelThreshold) / 2);
+    let heroicFP = (context.data.characterLevel - AV.HeroicLevelThreshold > 0) ? context.data.characterLevel - AV.HeroicLevelThreshold : 0;
  		fp.max = 2 + context.data.wits.mod + mundaneFP + heroicFP;
     let overspent = (fp.value > fp.max);
 
@@ -154,7 +154,7 @@ export class AVActorSheet extends ActorSheet {
     // Determine spells available and used (by type), highlight if overspent
     let casters = context.items.filter((item) => { return item.type === "classCaster"; });
     let spells = context.items.filter((item) => { return item.type === "spell" && 
-      (item.data.location === REDAGE.SPELL_PREPARED || item.data.location === REDAGE.SPELL_INNATE); });
+      (item.data.location === AV.SPELL_PREPARED || item.data.location === AV.SPELL_INNATE); });
     let unknownSpells = spells.length;
 
     overspent = false;
@@ -231,13 +231,13 @@ export class AVActorSheet extends ActorSheet {
 
     const statuses = [];
     const statusesByOrigin = {};
-    for (let o=0; o < REDAGE.StatusOrigins.length; o++) {
-      statusesByOrigin[REDAGE.StatusOrigins[o]] = [];
+    for (let o=0; o < AV.StatusOrigins.length; o++) {
+      statusesByOrigin[AV.StatusOrigins[o]] = [];
     }
 
     // Iterate through items, allocating to containers (avoid container name collision w/ base location options)
     let containers = {};
-    context.items.filter(i => i.data.tags.includes("container") && !REDAGE.ItemLocations.includes(i.name)).forEach(i => containers[i._id] = i);
+    context.items.filter(i => i.data.tags.includes("container") && !AV.ItemLocations.includes(i.name)).forEach(i => containers[i._id] = i);
 
     // collection of non-base location gear for post-sorting
     const containedGear = [];
@@ -250,10 +250,10 @@ export class AVActorSheet extends ActorSheet {
       if (i.data.group === "item")
       {
         // add containers to location list, not including self, it this item is a container
-        i.data.locations = REDAGE.ItemLocations;
+        i.data.locations = AV.ItemLocations;
         i.data.containers = Object.values(containers).filter(val => i._id !== val._id).map(val => { return { name: val.name, id: val._id }; });
 
-        i.data.isContainer = (i.data.tags.includes("container") && !REDAGE.ItemLocations.includes(i.name));
+        i.data.isContainer = (i.data.tags.includes("container") && !AV.ItemLocations.includes(i.name));
         i.data.isExpanded = (i.data.tags.includes("expanded") && i.data.isContainer);
         i.data.noInfoFields = i.data.tags.includes("no_info_fields");
 
@@ -261,13 +261,13 @@ export class AVActorSheet extends ActorSheet {
         i.displayName = i.name;
         i.data.isVisible = "";
 
-        if (!REDAGE.ItemLocations.includes(i.data.location))
+        if (!AV.ItemLocations.includes(i.data.location))
           containedGear.push(i);
-        else if (i.data.location == REDAGE.INV_NONE)
+        else if (i.data.location == AV.INV_NONE)
           limbo.push(i);
-        else if (i.data.location == REDAGE.INV_CAMP)
+        else if (i.data.location == AV.INV_CAMP)
         	gearByLoc.Camp.push(i);
-        else if (i.data.location == REDAGE.INV_TOWN)
+        else if (i.data.location == AV.INV_TOWN)
         	gearByLoc.Town.push(i);
         else
         	gearByLoc.Inventory.push(i);
@@ -279,7 +279,7 @@ export class AVActorSheet extends ActorSheet {
         features.push(i);
 
         // parse display tags
-        let displayTags = REDAGE.getCodeTags(i.data.tags, "display:").map(tag => Roll.replaceFormulaData(tag, context));
+        let displayTags = AV.getCodeTags(i.data.tags, "display:").map(tag => Roll.replaceFormulaData(tag, context));
         i.data.display = displayTags.join(", ");
 
         if (i.type === 'featureResource' || i.type === 'featureResourceRollable')
@@ -309,24 +309,24 @@ export class AVActorSheet extends ActorSheet {
       // Append to spells
       else if (i.data.group === "magic")
       {
-        i.data.spellLocations = REDAGE.SpellLocations;
+        i.data.spellLocations = AV.SpellLocations;
         spells.push(i);
-        if (i.data.location == REDAGE.SPELL_CAMP)
+        if (i.data.location == AV.SPELL_CAMP)
         	spellsByLoc.Camp.push(i);
-        else if (i.data.location == REDAGE.SPELL_TOWN)
+        else if (i.data.location == AV.SPELL_TOWN)
         	spellsByLoc.Town.push(i);
         else
         	spellsByLoc.Inventory.push(i);
         
         // parse display tags
-        let displayTags = REDAGE.getCodeTags(i.data.tags, "display:").map(tag => Roll.replaceFormulaData(tag, context));
+        let displayTags = AV.getCodeTags(i.data.tags, "display:").map(tag => Roll.replaceFormulaData(tag, context));
         i.data.display = displayTags.join(", ");
       }
     }
 
 		// sort gear and spells by location
-    gearByLoc.Inventory.sort(REDAGE.locationSort(REDAGE.ItemLocations));
-    spellsByLoc.Inventory.sort(REDAGE.locationSort(REDAGE.SpellLocations));
+    gearByLoc.Inventory.sort(AV.locationSort(AV.ItemLocations));
+    spellsByLoc.Inventory.sort(AV.locationSort(AV.SpellLocations));
 
     // put contained gear after its container
     let placement = 0;
@@ -378,7 +378,7 @@ export class AVActorSheet extends ActorSheet {
     if (limbo.length > 0) {
       limbo.forEach(i => {
         let item = context.actor.items.get(i._id);
-        item.update({ "data.location": REDAGE.INV_NONE }, {})
+        item.update({ "data.location": AV.INV_NONE }, {})
       });
       gearByLoc = { Limbo: limbo, Inventory: gearByLoc.Inventory, Camp: gearByLoc.Camp, Town: gearByLoc.Town };
     }
@@ -392,7 +392,7 @@ export class AVActorSheet extends ActorSheet {
     context.statuses = statuses;
     context.statusesByOrigin = statusesByOrigin;
 
-    context.statusOrigins = REDAGE.StatusOrigins;
+    context.statusOrigins = AV.StatusOrigins;
    }
 
   /* -------------------------------------------- */
@@ -461,7 +461,7 @@ export class AVActorSheet extends ActorSheet {
       ev.preventDefault();
       const header = ev.currentTarget;
       const table = header.dataset.array;
-      REDAGE.pushText(this.actor, table);
+      AV.pushText(this.actor, table);
     });
 
     html.find(".item-text-edit").click((ev) => {
@@ -470,7 +470,7 @@ export class AVActorSheet extends ActorSheet {
       const table = header.dataset.array;
       const index = header.dataset.id;
       // const text = $(ev.currentTarget).closest(".item").data("tag");
-      REDAGE.pushText(this.actor, table, index);
+      AV.pushText(this.actor, table, index);
     });
 
     html.find(".item-text-pop").click((ev) => {
@@ -478,7 +478,7 @@ export class AVActorSheet extends ActorSheet {
       const header = ev.currentTarget;
       const table = header.dataset.array;
       const index = header.dataset.id;
-      REDAGE.popText(this.actor, table, index);
+      AV.popText(this.actor, table, index);
     });
 
     html.find(".item-text-up").click((ev) => {
@@ -486,7 +486,7 @@ export class AVActorSheet extends ActorSheet {
       const header = ev.currentTarget;
       const table = header.dataset.array;
       const index = header.dataset.id;
-      REDAGE.moveText(this.actor, table, index, -1);
+      AV.moveText(this.actor, table, index, -1);
     });
 
     html.find(".item-text-down").click((ev) => {
@@ -494,7 +494,7 @@ export class AVActorSheet extends ActorSheet {
       const header = ev.currentTarget;
       const table = header.dataset.array;
       const index = header.dataset.id;
-      REDAGE.moveText(this.actor, table, index, 1);
+      AV.moveText(this.actor, table, index, 1);
     });
 
     // Drag events for macros.
@@ -701,12 +701,12 @@ export class AVActorSheet extends ActorSheet {
 
     if (item.data.data.group === "item") {
       let containers = {};
-      item.actor.items.filter(i => i.data.data.tags.includes("container") && !REDAGE.ItemLocations.includes(i.name)).forEach(i => containers[i.id] = i);
+      item.actor.items.filter(i => i.data.data.tags.includes("container") && !AV.ItemLocations.includes(i.name)).forEach(i => containers[i.id] = i);
 
       // walk up the layers of containment, failing in relocation if more than depth 10 passes, or you reach yourself (recursive placement) or an undefined holder
       for (let cnt=0; cnt < 10 && thisLocation !== item.id && thisLocation !== undefined; cnt++) {
         // if we've reached a base location, allow the relocation
-        if (REDAGE.ItemLocations.includes(thisLocation)) { validRelocation = true; break; }
+        if (AV.ItemLocations.includes(thisLocation)) { validRelocation = true; break; }
 
         if (containers[thisLocation] !== undefined) { thisLocation = containers[thisLocation].data.data.location; } else { thisLocation = undefined; }
       }
@@ -801,7 +801,7 @@ export class AVActorSheet extends ActorSheet {
   // Helper Functions
 
   _calculateClassLevels(items) {   
-    let classes = items.filter((item) => { return REDAGE.isType(item, ["class", "classCaster", "classFighter"]); });
+    let classes = items.filter((item) => { return AV.isType(item, ["class", "classCaster", "classFighter"]); });
     if (classes.length === 0) return 0;
     let classLevels = classes.map(c => c.data.classLevel).reduce((a, b) => a + b);
     return classLevels;
@@ -812,7 +812,7 @@ export class AVActorSheet extends ActorSheet {
 
     var abhumanLevels = 0;
     for (let i of items) {
-      if (REDAGE.isType(i, ["class", "classCaster", "classFighter"])) {
+      if (AV.isType(i, ["class", "classCaster", "classFighter"])) {
         if (i.name.toLowerCase() === "rogue")
           featPointsSpent.rogue.max = Math.min(15, i.data.classLevel + 5);
         else if (i.name.toLowerCase().includes("brute") || i.name.toLowerCase().includes("malison"))
@@ -860,7 +860,7 @@ export class AVActorSheet extends ActorSheet {
 			rollData: rollData
 		};
 
-		const template = "systems/redage/templates/dialogs/roll-stat.html";
+		const template = "systems/arden-vul/templates/dialogs/roll-stat.html";
 		const html = await renderTemplate(template, dialogData);
 
 		// this.tempData is a temporary place to store data for inter-function transport
@@ -906,10 +906,10 @@ export class AVActorSheet extends ActorSheet {
 		// get data from dialog
 		var _a;
 		const form = html[0].querySelector("form");
-		const adShift = REDAGE.getDialogField(form, "adShift", true) - 3;
-		dialogData.defaultStat = REDAGE.getDialogField(form, "defaultStat");
-		dialogData.defaultRoll = REDAGE.getDialogField(form, "defaultRoll");
-		dialogData.targets = Math.max(1, REDAGE.getDialogField(form, "targets", true));
+		const adShift = AV.getDialogField(form, "adShift", true) - 3;
+		dialogData.defaultStat = AV.getDialogField(form, "defaultStat");
+		dialogData.defaultRoll = AV.getDialogField(form, "defaultRoll");
+		dialogData.targets = Math.max(1, AV.getDialogField(form, "targets", true));
 
     if (!dialogData.defaultRoll) dialogData.defaultRoll = "mod";
 
@@ -940,21 +940,21 @@ export class AVActorSheet extends ActorSheet {
       dialogData.formula = dialogData.formula + " + " + dialogData.modifiers;
 
     if (!Roll.validate(dialogData.formula)) {
-      REDAGE.prompt("Invalid Roll Formula", "Invalid: " + dialogData.formula);
+      AV.prompt("Invalid Roll Formula", "Invalid: " + dialogData.formula);
       return;
     }
   
     // handle advantage / disadvantage on roll
-    let dice = REDAGE.getD20(actor.data, adShift);
+    let dice = AV.getD20(actor.data, adShift);
     dialogData.formula = dice + " + " + dialogData.formula;
     const adShiftLadder = ["+3D", "+2D", "+D", "", "+A", "+2A", "+3A"];
     if (adShift != 0) dialogData.rollNotes.push(adShiftLadder[adShift+3]);
 
     let specials = { Crit: [20, 1000], Fumble: [-1000, 1] };
 
-    dialogData.rolls = await REDAGE.d20Roll(dialogData.formula, dialogData.targets, dialogData.rollData, specials);
+    dialogData.rolls = await AV.d20Roll(dialogData.formula, dialogData.targets, dialogData.rollData, specials);
     if (dialogData.rolls.length <= 0) {
-      REDAGE.prompt("Roll Handling Failed", "No rolls were processed.");
+      AV.prompt("Roll Handling Failed", "No rolls were processed.");
       return;
     }
 
@@ -974,7 +974,7 @@ export class AVActorSheet extends ActorSheet {
     dialogData.rollNotes = (dialogData.rollNotes.length > 0) ? "(" + dialogData.rollNotes.join(", ") + ")" : "";
     dialogData.diceTooltip = { rollRender: await dialogData.rolls[0].roll.render() };
 
-		const template = "systems/redage/templates/chat/stat-roll.html";
+		const template = "systems/arden-vul/templates/chat/stat-roll.html";
 		const chatContent = await renderTemplate(template, dialogData);
 		const chatMessage = getDocumentClass("ChatMessage");
 		chatMessage.create(
@@ -1004,7 +1004,7 @@ export class AVActorSheet extends ActorSheet {
       rollData: rollData
     };
 
-    const template = "systems/redage/templates/dialogs/resource-manager.html";
+    const template = "systems/arden-vul/templates/dialogs/resource-manager.html";
     const html = await renderTemplate(template, dialogData);
     this.tempData = dialogData;
 
@@ -1034,28 +1034,28 @@ export class AVActorSheet extends ActorSheet {
       }
       else if (action === "cantrips") {
         if (actor.data.mana.cantrip > 0)
-          REDAGE.prompt("Refresh Unnecessary", "You still have cantrips.");
+          AV.prompt("Refresh Unnecessary", "You still have cantrips.");
         else if (actor.data.mana.value < 1)
-          REDAGE.prompt("Refresh Failed", "Insufficient mana.");
-        else if (await REDAGE.confirm("Refresh Cantrips", "Spend 1 mana to restore all cantrip mana."))
+          AV.prompt("Refresh Failed", "Insufficient mana.");
+        else if (await AV.confirm("Refresh Cantrips", "Spend 1 mana to restore all cantrip mana."))
           this.actor.update( { "data.mana.cantrip": 5, "data.mana.value": actor.data.mana.value-1 }, {});
       }
       else if (action === "short") {
-        if (await REDAGE.confirm("Short Rest", "Restore all cantrip mana.  Handle abilities manually."))
+        if (await AV.confirm("Short Rest", "Restore all cantrip mana.  Handle abilities manually."))
           this.actor.update( { "data.mana.cantrip": 5 }, {});
       }
       else if (action === "long") {
         let hpFromReserve = Math.min((actor.data.health.max - actor.data.health.value), actor.data.health.reserve);
         let manaFromReserve = Math.min((actor.data.mana.max - actor.data.mana.value), actor.data.mana.reserve);
         let lifeHeal = (actor.data.life.max > actor.data.life.value) ? "Heal 1 life.  " : "";
-        if (await REDAGE.confirm("Long Rest", "Restore " + hpFromReserve + " hp and " + manaFromReserve + " mana from reserve.  " + lifeHeal + "Handle abilities, fatigue, and wounds manually.")) {
+        if (await AV.confirm("Long Rest", "Restore " + hpFromReserve + " hp and " + manaFromReserve + " mana from reserve.  " + lifeHeal + "Handle abilities, fatigue, and wounds manually.")) {
           this.actor.update( { "data.health.value": (actor.data.health.value + hpFromReserve), "data.health.reserve": (actor.data.health.reserve - hpFromReserve), 
             "data.life.value": Math.min(actor.data.life.max, actor.data.life.value + 1),
             "data.mana.value": (actor.data.mana.value + manaFromReserve), "data.mana.cantrip": 5, "data.mana.reserve": (actor.data.mana.reserve - manaFromReserve) }, {});
         }
       }
       else if (action === "extended") {
-        if (await REDAGE.confirm("Extended Rest", "Restore all hp, life, mana, and reserve.  Handle abilities, fatigue, and wounds manually.")) {
+        if (await AV.confirm("Extended Rest", "Restore all hp, life, mana, and reserve.  Handle abilities, fatigue, and wounds manually.")) {
           this.actor.update( { "data.health.value": actor.data.health.max, "data.health.reserve": actor.data.health.max, "data.life.value": actor.data.life.max,
             "data.mana.value": actor.data.mana.max, "data.mana.cantrip": 5, "data.mana.reserve": actor.data.mana.max }, {});
         }

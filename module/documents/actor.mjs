@@ -158,8 +158,8 @@ export class AVActor extends Actor {
     // data.fatigue.exhaustion = Math.floor(data.fatigue.value / 10);
 
     // base speed
-    // let speedTags = REDAGE.getCodeTags(tags, "speed:");
-    // let baseSpeedMod = REDAGE.getCodeTagSum(speedTags, "base:");
+    // let speedTags = AV.getCodeTags(tags, "speed:");
+    // let baseSpeedMod = AV.getCodeTagSum(speedTags, "base:");
     // data.speed.base.value = Math.round((data.speed.base.max + baseSpeedMod) * ((6 - data.fatigue.exhaustion) / 6));
     // data.speed.base.color = (data.speed.base.value > data.speed.base.max) ? "green" : ((data.speed.base.value < data.speed.base.max) ? "red" : "");
 
@@ -190,11 +190,11 @@ export class AVActor extends Actor {
 
     // inventory
     // data.readied = { value: this._calculateReadiedItems(items) };
-    // let bonusReadied = REDAGE.getCodeTagSum(tags, "readied:");
+    // let bonusReadied = AV.getCodeTagSum(tags, "readied:");
     // data.readied.max = Math.round(Math.max(data.dexterity.value, data.wits.value) / 2.0) + bonusReadied;
 
     // data.carried = { value: (this._calculateCarriedItems(items) + data.fatigue.exhaustion) };
-    // let bonusCarried = REDAGE.getCodeTagSum(tags, "carried:");
+    // let bonusCarried = AV.getCodeTagSum(tags, "carried:");
     // data.carried.max = data.vigor.value + bonusCarried;
 
     // if (data.carried.value <= Math.ceil(data.carried.max / 2))
@@ -217,7 +217,7 @@ export class AVActor extends Actor {
   // 	let readiedItems = 0;
 
   //   for (let i of items) {
-  //     if (REDAGE.isType(i, ['item', 'weapon', 'armor']) && i.data.data.location == REDAGE.INV_READY) {
+  //     if (AV.isType(i, ['item', 'weapon', 'armor']) && i.data.data.location == AV.INV_READY) {
   //       if (i.data.data.weight < 1.0) {
   //         // multiple light items take up readied slots = total weight (min 1)
   //         readiedItems += Math.max(1, Math.round(i.data.data.weight * i.data.data.quantity.value));
@@ -235,18 +235,18 @@ export class AVActor extends Actor {
   // _calculateCarriedItems(items) {
   //   let containers = {};
   //   items.contents
-  //     .filter(i => i.data.data.tags.includes("container") &&  !REDAGE.ItemLocations.includes(i.name) && i.data.data.group == "item")
+  //     .filter(i => i.data.data.tags.includes("container") &&  !AV.ItemLocations.includes(i.name) && i.data.data.group == "item")
   //     .forEach(i => containers[i.id] = i);
 
   //   return items.contents.filter(i => i.data.data.group == "item")
   //     .filter(i => {
   //       let loc = i.data.data.location;
   //       let weightless = (containers[loc] !== undefined) ? containers[loc].data.data.tags.includes("weightless") : false;
-  //       while (!REDAGE.ItemLocations.includes(loc) && loc !== undefined && !weightless) {
+  //       while (!AV.ItemLocations.includes(loc) && loc !== undefined && !weightless) {
   //         loc = containers[loc].data.data.location;
   //         weightless = (containers[loc] !== undefined) ? containers[loc].data.data.tags.includes("weightless") : false;
   //       }
-  //       return (loc == REDAGE.INV_READY || loc == REDAGE.INV_WORN || loc == REDAGE.INV_STOWED);
+  //       return (loc == AV.INV_READY || loc == AV.INV_WORN || loc == AV.INV_STOWED);
   //     })
   //     .map(i => Math.round(i.data.data.quantity.value * i.data.data.weight))
   //     .reduce((a,b) => a+b, 0);
@@ -264,7 +264,7 @@ export class AVActor extends Actor {
   }
 
   // _calculateAttackBonus(items) {
-  //   let classes = items.filter((item) => { return REDAGE.isType(item, ["class", "classCaster", "classFighter"]); });
+  //   let classes = items.filter((item) => { return AV.isType(item, ["class", "classCaster", "classFighter"]); });
   //   let returnValue = 0;
   //   let totalLevels = 1;
   //   if (classes.length === 0) return 0;
@@ -272,7 +272,7 @@ export class AVActor extends Actor {
   //   for (let c = 0; c < classes.length; c++) {
   //     let thisClassLevels = classes[c].data.data.classLevel;
   //     for (let i = 1; i <= thisClassLevels; i++) {        
-  //       if (totalLevels > REDAGE.HeroicLevelThreshold) break;
+  //       if (totalLevels > AV.HeroicLevelThreshold) break;
   //       returnValue += classes[c].data.data.attackBonusPerLevel;
   //       totalLevels++;
   //     }
@@ -281,7 +281,7 @@ export class AVActor extends Actor {
   // }
 
   // _calculateMaxHealth(items, vigorMod, level) {
-  //   let classes = items.filter((item) => { return REDAGE.isType(item, ["class", "classCaster", "classFighter"]); });
+  //   let classes = items.filter((item) => { return AV.isType(item, ["class", "classCaster", "classFighter"]); });
   //   let returnValue = 0;
   //   let totalLevels = 1;
   //   classes.sort((a, b) => { return b.data.data.startingHealth - a.data.data.startingHealth; });
@@ -293,7 +293,7 @@ export class AVActor extends Actor {
   //   for (let c = 0; c < classes.length; c++) {
   //     let thisClassLevels = classes[c].data.data.classLevel;
   //     for (let i = 1; i <= thisClassLevels; i++) {        
-  //       if (totalLevels > REDAGE.HeroicLevelThreshold) 
+  //       if (totalLevels > AV.HeroicLevelThreshold) 
   //         returnValue += classes[c].data.data.maxHealthPerLevelHeroic;
   //       else 
   //         returnValue += classes[c].data.data.maxHealthPerLevel + vigorMod;
@@ -311,12 +311,12 @@ export class AVActor extends Actor {
 
 	// 	for (let c = 0; c < armor.length; c++) {
 	// 		// worn and readied armor grants protection (half value if non-proficient)
-	// 		if (armor[c].data.data.location === REDAGE.INV_WORN || armor[c].data.data.location === REDAGE.INV_READY) {
+	// 		if (armor[c].data.data.location === AV.INV_WORN || armor[c].data.data.location === AV.INV_READY) {
 	// 			let def = Number(armor[c].data.data.defense) + Number(armor[c].data.data.defenseBonus);
 	// 			defense += (armor[c].data.data.isProficient) ? def : Math.floor(def / 2);
 	// 		}
 	// 		// worn armor caps dex bonus and mod (or +1 and +0, if non-proficient)
-	// 		if (armor[c].data.data.location === REDAGE.INV_WORN) {
+	// 		if (armor[c].data.data.location === AV.INV_WORN) {
 	// 			maxDexterityBonus = (armor[c].data.data.isProficient) ?
 	// 				Math.min(maxDexterityBonus, armor[c].data.data.maxDexterityBonus) : 1;
 	// 			maxDexterityMod = (armor[c].data.data.isProficient) ?
@@ -373,7 +373,7 @@ export class AVActor extends Actor {
     //   data.carried.loadLevel = "Heavy";
 
     // calculate treasure
-    // data.treasure = items.filter((item) => item.data.data.group === 'item' && item.data.data.isLoot && item.data.data.location !== REDAGE.INV_TOWN)
+    // data.treasure = items.filter((item) => item.data.data.group === 'item' && item.data.data.isLoot && item.data.data.location !== AV.INV_TOWN)
     //   .map((item) => item.data.data.quantity.value * item.data.data.value)
     //   .reduce((a,b) => a+b, 0);
     // data.xp.total = data.xp.bonus + (data.xp.riskMultiplier * data.treasure);

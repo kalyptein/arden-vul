@@ -223,19 +223,19 @@
   text-align: center;
 }
 
-/* Styles limited to redage sheets */
-.redage {
+/* Styles limited to arden-vul sheets */
+.arden-vul {
   /* ----------------------------------------- */
   /*  Items Lists                              */
   /* ----------------------------------------- */
-  /* Example style for RedAge (can be removed if not needed) */
+  /* Example style for arden-vul (can be removed if not needed) */
 }
 
-.redage .item-form {
+.arden-vul .item-form {
   font-family: "Roboto", sans-serif;
 }
 
-.redage .sheet-header {
+.arden-vul .sheet-header {
   -webkit-box-flex: 0;
   -ms-flex: 0 auto;
   flex: 0 auto;
@@ -255,7 +255,7 @@
   margin-bottom: 10px;
 }
 
-.redage .sheet-header .profile-img {
+.arden-vul .sheet-header .profile-img {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100px;
   flex: 0 0 100px;
@@ -263,50 +263,50 @@
   margin-right: 10px;
 }
 
-.redage .sheet-header .header-fields {
+.arden-vul .sheet-header .header-fields {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.redage .sheet-header h1.charname {
+.arden-vul .sheet-header h1.charname {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
 }
 
-.redage .sheet-header h1.charname input {
+.arden-vul .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
 
-.redage .sheet-tabs {
+.arden-vul .sheet-tabs {
   -webkit-box-flex: 0;
   -ms-flex: 0;
   flex: 0;
 }
 
-.redage .sheet-body,
-.redage .sheet-body .tab,
-.redage .sheet-body .tab .editor {
+.arden-vul .sheet-body,
+.arden-vul .sheet-body .tab,
+.arden-vul .sheet-body .tab .editor {
   height: 100%;
 }
 
-.redage .tox .tox-editor-container {
+.arden-vul .tox .tox-editor-container {
   background: #fff;
 }
 
-.redage .tox .tox-edit-area {
+.arden-vul .tox .tox-edit-area {
   padding: 0 8px;
 }
 
-.redage .resource-label {
+.arden-vul .resource-label {
   font-weight: bold;
 }
 
-.redage .items-header {
+.arden-vul .items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -318,12 +318,12 @@
   font-weight: bold;
 }
 
-.redage .items-header > * {
+.arden-vul .items-header > * {
   font-size: 14px;
   text-align: center;
 }
 
-.redage .items-header .item-name {
+.arden-vul .items-header .item-name {
   font-weight: bold;
   padding-left: 5px;
   text-align: left;
@@ -332,7 +332,7 @@
   display: flex;
 }
 
-.redage .items-list {
+.arden-vul .items-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -341,13 +341,13 @@
   color: #444;
 }
 
-.redage .items-list .item-list {
+.arden-vul .items-list .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.redage .items-list .item-name {
+.arden-vul .items-list .item-name {
   -webkit-box-flex: 2;
   -ms-flex: 2;
   flex: 2;
@@ -363,13 +363,13 @@
   display: flex;
 }
 
-.redage .items-list .item-name h3, .redage .items-list .item-name h4 {
+.arden-vul .items-list .item-name h3, .arden-vul .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
 }
 
-.redage .items-list .item-controls {
+.arden-vul .items-list .item-controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -381,13 +381,13 @@
   justify-content: flex-end;
 }
 
-.redage .items-list .item-controls a {
+.arden-vul .items-list .item-controls a {
   font-size: 12px;
   text-align: center;
   margin: 0 6px;
 }
 
-.redage .items-list .item {
+.arden-vul .items-list .item {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -395,15 +395,15 @@
   border-bottom: 1px solid #c9c7b8;
 }
 
-.redage .items-list .item:last-child {
+.arden-vul .items-list .item:last-child {
   border-bottom: none;
 }
 
-.redage .items-list .item .item-name {
+.arden-vul .items-list .item .item-name {
   color: #191813;
 }
 
-.redage .items-list .item .item-name .item-image {
+.arden-vul .items-list .item .item-name .item-image {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 30px;
   flex: 0 0 30px;
@@ -413,14 +413,14 @@
   margin-right: 5px;
 }
 
-.redage .items-list .item-prop {
+.arden-vul .items-list .item-prop {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
 
-.redage .items-list .items-header {
+.arden-vul .items-list .items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -432,33 +432,33 @@
   font-weight: bold;
 }
 
-.redage .items-list .items-header > * {
+.arden-vul .items-list .items-header > * {
   font-size: 12px;
   text-align: center;
 }
 
-.redage .items-list .items-header .item-name {
+.arden-vul .items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
 }
 
-.redage .item-formula {
+.arden-vul .item-formula {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 200px;
   flex: 0 0 200px;
   padding: 0 8px;
 }
 
-.redage .effects .item .effect-source,
-.redage .effects .item .effect-duration,
-.redage .effects .item .effect-controls {
+.arden-vul .effects .item .effect-source,
+.arden-vul .effects .item .effect-duration,
+.arden-vul .effects .item .effect-controls {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
 
-.redage .effects .item .effect-controls {
+.arden-vul .effects .item .effect-controls {
   border: none;
 }
 

@@ -1,4 +1,4 @@
-import { REDAGE } from "../helpers/config.mjs";
+import { AV } from "../helpers/config.mjs";
 
 /*
  * Extend the basic Item with some very simple modifications.
@@ -45,11 +45,11 @@ export class AVItem extends Item {
     if (item.type === "weapon") {
 			return this._onWeaponAttackRoll(item, actor);
     }
-    else if (REDAGE.isType(item, ["featureRollable", "featureResourceRollable"])) {
+    else if (AV.isType(item, ["featureRollable", "featureResourceRollable"])) {
       formula = item.data.formula;
       label = `${item.name}`;
     }
-    else if (REDAGE.isType(item, ["featureSkill"])) {
+    else if (AV.isType(item, ["featureSkill"])) {
       // if you got here from an item roll, call the method on actor-sheet
       let featMod = (item.data.tier == 1) ? "@skilled" : ((item.data.tier == 2) ? "@expert" : "");
       return this.actor.sheet._onStatRoll(this.name, item.data.defaultStat, item.data.defaultRoll, featMod);
@@ -64,7 +64,7 @@ export class AVItem extends Item {
       if (casterClass)
         return this._onSpellCast(item, actor, casterClass);
       else 
-        REDAGE.prompt("Unbound Spell", "Spell's origin doesn't match any class's spell type.");
+        AV.prompt("Unbound Spell", "Spell's origin doesn't match any class's spell type.");
 
       return;
     }
@@ -149,7 +149,7 @@ export class AVItem extends Item {
       rollData: rollData
     };
 
-    const template = "systems/redage/templates/dialogs/roll-weapon-attack.html";
+    const template = "systems/arden-vul/templates/dialogs/roll-weapon-attack.html";
     const html = await renderTemplate(template, dialogData);
 
     // this.tempData is a temporary place to store data for inter-function transport
@@ -197,19 +197,19 @@ export class AVItem extends Item {
 
     // get data from dialog
     const form = html[0].querySelector("form");
-    const adShift = REDAGE.getDialogField(form, "adShift", true) - 3;
-    let attackModifierFormula = REDAGE.getDialogField(form, "attackModifierFormula");
-    let damageModifierFormula = REDAGE.getDialogField(form, "damageModifierFormula");
-    const targets = Math.max(1, REDAGE.getDialogField(form, "targets", true));
-    const targetStat = REDAGE.getDialogField(form, "targetStat");
+    const adShift = AV.getDialogField(form, "adShift", true) - 3;
+    let attackModifierFormula = AV.getDialogField(form, "attackModifierFormula");
+    let damageModifierFormula = AV.getDialogField(form, "damageModifierFormula");
+    const targets = Math.max(1, AV.getDialogField(form, "targets", true));
+    const targetStat = AV.getDialogField(form, "targetStat");
 
     let baseAttackFormula = dialogData.attackFormula;
     dialogData.attackFormula = dialogData.attackFormula + ((attackModifierFormula.trim()) ? "+" + attackModifierFormula.trim() : "");
     if (!Roll.validate(dialogData.attackFormula)) {
-      REDAGE.prompt("Invalid Attack Formula", "Invalid: " + dialogData.attackFormula);
+      AV.prompt("Invalid Attack Formula", "Invalid: " + dialogData.attackFormula);
       return;
     }
-    let dice = REDAGE.getD20(actor, adShift);
+    let dice = AV.getD20(actor, adShift);
     dialogData.attackFormula = dice + " + " + dialogData.attackFormula;
 
     const adShiftLadder = ["+3D", "+2D", "+D", "", "+A", "+2A", "+3A"];
@@ -218,7 +218,7 @@ export class AVItem extends Item {
 
     dialogData.damageFormula = dialogData.damageFormula + ((damageModifierFormula.trim()) ? "+" + damageModifierFormula.trim() : "");
     if (!Roll.validate(dialogData.damageFormula)) {
-      REDAGE.prompt("Invalid Damage Formula", "Invalid: " + dialogData.damageFormula);
+      AV.prompt("Invalid Damage Formula", "Invalid: " + dialogData.damageFormula);
       return;
     }
 
@@ -255,9 +255,9 @@ export class AVItem extends Item {
     if (cleave) dialogData.attackNotes.push("Cleave");
     // if (rollData.fighter.cleave) dialogData.attackNotes.push("Cleave");
 
-    dialogData.attacks = await REDAGE.d20Roll(dialogData.attackFormula, targets, dialogData.rollData, specials);
+    dialogData.attacks = await AV.d20Roll(dialogData.attackFormula, targets, dialogData.rollData, specials);
     if (dialogData.attacks.length <= 0) {
-      REDAGE.prompt("Attack Handling Failed", "No attacks were processed.");
+      AV.prompt("Attack Handling Failed", "No attacks were processed.");
       return;
     }
 
@@ -300,7 +300,7 @@ export class AVItem extends Item {
 
     dialogData.attackNotes = (dialogData.attackNotes.length > 0) ? "(" + dialogData.attackNotes.join(", ") + ")" : "";
 
-    const template = "systems/redage/templates/chat/weapon-attack-roll.html";
+    const template = "systems/arden-vul/templates/chat/weapon-attack-roll.html";
     const chatContent = await renderTemplate(template, dialogData);
     const chatMessage = getDocumentClass("ChatMessage");
     chatMessage.create(
@@ -374,7 +374,7 @@ export class AVItem extends Item {
       castingTooltipColor: ((rollData.casterMaxPower > rollData.panoply) ? "red" : "")
     };
 
-    const template = "systems/redage/templates/dialogs/roll-spell-cast.html";
+    const template = "systems/arden-vul/templates/dialogs/roll-spell-cast.html";
     const html = await renderTemplate(template, dialogData);
 
     // this.tempData is a temporary place to store data for inter-function transport
@@ -417,12 +417,12 @@ export class AVItem extends Item {
 
     // get data from dialog
     const form = html[0].querySelector("form");
-    const adShift = REDAGE.getDialogField(form, "adShift", true) - 3;
-    const power = REDAGE.getDialogField(form, "power", true);
+    const adShift = AV.getDialogField(form, "adShift", true) - 3;
+    const power = AV.getDialogField(form, "power", true);
     const manaCost = (power > 0) ? Math.floor(1 + ((4/3) * power)) : 0;
-    const targetStat = REDAGE.getDialogField(form, "targetStat");
-    const targets = REDAGE.getDialogField(form, "targets", true);
-    const magnitudeFormula = REDAGE.getDialogField(form, "magnitudeFormula");
+    const targetStat = AV.getDialogField(form, "targetStat");
+    const targets = AV.getDialogField(form, "targets", true);
+    const magnitudeFormula = AV.getDialogField(form, "magnitudeFormula");
 
     dialogData.power = power;
     rollData.power = power;
@@ -442,14 +442,14 @@ export class AVItem extends Item {
     // decrement mana
     if (manaCost == 0) {
       if (actor.data.mana.cantrip <= 0) {
-        REDAGE.prompt("Cantrip Failed", "Insufficient cantrips (consider refreshing with mana)");
+        AV.prompt("Cantrip Failed", "Insufficient cantrips (consider refreshing with mana)");
         return;
       }
       this.actor.update( { "data.mana.cantrip": actor.data.mana.cantrip - 1 }, {});
     }
     else {
       if (actor.data.mana.value < manaCost) {
-        REDAGE.prompt("Spell Failed", "Insufficient mana (consider Overdrawing)");
+        AV.prompt("Spell Failed", "Insufficient mana (consider Overdrawing)");
         return;
       }
       this.actor.update( { "data.mana.value": (actor.data.mana.value - manaCost) }, {});
@@ -461,9 +461,9 @@ export class AVItem extends Item {
     if (spell.hasEffect && !isNaN(targets) && targets > 0)
     {
       // handle advantage / disadvantage on effect roll
-      let dice = REDAGE.getD20(actor, adShift);
+      let dice = AV.getD20(actor, adShift);
       dialogData.effectFormula = dice + " + " + dialogData.effectFormula;
-      dialogData.effects = await REDAGE.d20Roll(dialogData.effectFormula, targets, dialogData.rollData);
+      dialogData.effects = await AV.d20Roll(dialogData.effectFormula, targets, dialogData.rollData);
     }
 
     // if there is a magnitude formula...
@@ -492,7 +492,7 @@ export class AVItem extends Item {
 
     dialogData.castNotes = (dialogData.castNotes.length > 0) ? "(" + dialogData.castNotes.join(", ") + ")" : "";
 
-    const template = "systems/redage/templates/chat/spell-cast-roll.html";
+    const template = "systems/arden-vul/templates/chat/spell-cast-roll.html";
     const chatContent = await renderTemplate(template, dialogData);
     const chatMessage = getDocumentClass("ChatMessage");
     chatMessage.create(
