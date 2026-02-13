@@ -4,11 +4,11 @@ import { AV } from "/systems/arden-vul/module/helpers/config.mjs";
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class AVActorSheet extends ActorSheet {
+export class AVActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["arden-vul", "sheet", "actor"],
       template: "systems/arden-vul/templates/actor/actor-sheet.html",
       width: 600,
@@ -20,7 +20,8 @@ export class AVActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return `systems/arden-vul/templates/actor/actor-${this.type}-sheet.html`;
+    // return `systems/arden-vul/templates/actor/actor-${this.type}-sheet.html`;
+    return `systems/arden-vul/templates/actor/actor-character-sheet.html`;
   }
 
   /* -------------------------------------------- */

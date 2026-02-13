@@ -43,10 +43,10 @@ Hooks.once('init', async function() {
   // CONFIG.ActiveEffect.documentClass = AVEffect;
 
   // Register sheet & item application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("arden-vul", AVActorSheet, { makeDefault: true });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("arden-vul", AVItemSheet, { makeDefault: true });
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet("arden-vul", AVActorSheet, { makeDefault: true });
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet("arden-vul", AVItemSheet, { makeDefault: true });
 
   await preloadHandlebarsTemplates();
 });

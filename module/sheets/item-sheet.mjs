@@ -4,11 +4,11 @@ import { AV } from "../helpers/config.mjs";
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class AVItemSheet extends ItemSheet {
+export class AVItemSheet extends foundry.appv1.sheets.ItemSheet {
 
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["arden-vul", "sheet", "item"],
       width: 520,
       height: 480,
