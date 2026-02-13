@@ -35,34 +35,34 @@ export class RedAgeItemSheet extends ItemSheet {
     const context = super.getData();
 
     // Use a safe clone of the item data for further operations.
-    const itemData = context.item.data;
+    // const itemData = context.item.data;
 
     // Retrieve the roll data for TinyMCE editors.
-    context.rollData = {};
-    let actor = this.object?.parent ?? null;
-    if (actor) {
-      context.rollData = actor.getRollData();
-    }
+    // context.rollData = {};
+    // let actor = this.object?.parent ?? null;
+    // if (actor) {
+    //   context.rollData = actor.getRollData();
+    // }
 
     // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = itemData.data;
-    context.flags = itemData.flags;
+    // context.data = itemData.data;
+    // context.flags = itemData.flags;
 
-    context.location = itemData.data.location;
-    context.locations = REDAGE.ItemLocations;
+    // context.location = itemData.data.location;
+    // context.locations = REDAGE.ItemLocations;
 
     // Iterate through items, allocating to containers (avoid container name collision w/ base location options)
     // add containers to location list, not including self, it this item is a container
-    let containers = {};
-    actor.items.filter(i => i.data.data.tags.includes("container") && !REDAGE.ItemLocations.includes(i.name)).forEach(i => containers[i.id] = i);
-    context.containers = Object.values(containers).filter(val => context.item.id !== val.id).map(val => { return { name: val.name, id: val.id }; });
+    // let containers = {};
+    // actor.items.filter(i => i.data.data.tags.includes("container") && !REDAGE.ItemLocations.includes(i.name)).forEach(i => containers[i.id] = i);
+    // context.containers = Object.values(containers).filter(val => context.item.id !== val.id).map(val => { return { name: val.name, id: val.id }; });
 
-    context.spellLocations = REDAGE.SpellLocations;
-    context.statusOrigins = REDAGE.StatusOrigins;
+    // context.spellLocations = REDAGE.SpellLocations;
+    // context.statusOrigins = REDAGE.StatusOrigins;
 
     // casting preparation
-    if (this.item.type === "classCaster")
-      this._calculateCasting(context);
+    // if (this.item.type === "classCaster")
+    //   this._calculateCasting(context);
 
     return context;
   }

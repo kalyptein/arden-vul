@@ -42,45 +42,45 @@ export class AVActorSheet extends ActorSheet {
 
     // Prepare character data and items.
     if (actorData.type == 'character') {
-      this._prepareItems(context);
-      this._prepareCharacterData(context);
+      // this._prepareItems(context);
+      // this._prepareCharacterData(context);
     }
 
     // Prepare NPC data and items.
     if (actorData.type == 'npc') {
-      this._prepareItems(context);
+      // this._prepareItems(context);
     }
 
     // Prepare Party data and items.
     if (actorData.type == 'party') {
 
-      switch (context.data.carried.loadLevel)
-      {
-      case "Standard": context.data.carried.color = "blue";
-        context.data.carried.tooltip = "";
-        break;
-      default: context.data.carried.color = "red";
-        context.data.carried.tooltip = "Each week including significant travel, roll the disaster check with +A";
-        break;
-      }
+      // switch (context.data.carried.loadLevel)
+      // {
+      // case "Standard": context.data.carried.color = "blue";
+      //   context.data.carried.tooltip = "";
+      //   break;
+      // default: context.data.carried.color = "red";
+      //   context.data.carried.tooltip = "Each week including significant travel, roll the disaster check with +A";
+      //   break;
+      // }
   
-      const gear = context.items.filter((i) => i.data.group === "item");
-      gear.forEach(item => { item.data.locations = REDAGE.ItemLocations; });
-      const gearByLoc = {
-        Equipment: gear.filter((i) => !i.data.isLoot && i.data.location !== REDAGE.INV_TOWN),
-        Treasure: gear.filter((i) => i.data.isLoot && i.data.location !== REDAGE.INV_TOWN),
-        Town: gear.filter((i) => i.data.location === REDAGE.INV_TOWN)
-      };
+      // const gear = context.items.filter((i) => i.data.group === "item");
+      // gear.forEach(item => { item.data.locations = REDAGE.ItemLocations; });
+      // const gearByLoc = {
+      //   Equipment: gear.filter((i) => !i.data.isLoot && i.data.location !== REDAGE.INV_TOWN),
+      //   Treasure: gear.filter((i) => i.data.isLoot && i.data.location !== REDAGE.INV_TOWN),
+      //   Town: gear.filter((i) => i.data.location === REDAGE.INV_TOWN)
+      // };
 
-      context.gear = gear;
-      context.gearByLoc = gearByLoc;
+      // context.gear = gear;
+      // context.gearByLoc = gearByLoc;
     }
     
     // Add roll data for TinyMCE editors.
-    context.rollData = context.actor.getRollData();
+    // context.rollData = context.actor.getRollData();
 
     // Prepare active effects
-    context.effects = prepareActiveEffectCategories(this.actor.effects);
+    // context.effects = prepareActiveEffectCategories(this.actor.effects);
 
     return context;
   }
