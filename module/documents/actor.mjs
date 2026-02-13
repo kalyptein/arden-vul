@@ -105,17 +105,6 @@ export class AVActor extends Actor {
     const items = this.system.items;
     const tags = [...AV.getTags(items), ...sys.tags];
 
-    // Stats
-    let modCalc = function(val) {
-      if (val <= 3) return Math.max(-1 * val, 0);
-      if (val <= 5) return -2;
-      if (val <= 8) return -1;
-      if (val <= 12) return 0;
-      if (val <= 15) return 1;
-      if (val <= 17) return 2;
-      return val-15;
-    }
-
     AV.STATS.forEach(stat => {
       sys[stat].bonus = sys[stat].value - 10;
       sys[stat].mod = modCalc(sys[stat].value);
@@ -433,4 +422,14 @@ export class AVActor extends Actor {
   
     //   // Process additional NPC data here.
     // }  
+}
+
+function modCalc(val) {
+    if (val <= 3) return Math.max(-1 * val, 0);
+    if (val <= 5) return -2;
+    if (val <= 8) return -1;
+    if (val <= 12) return 0;
+    if (val <= 15) return 1;
+    if (val <= 17) return 2;
+    return val-15;
 }
