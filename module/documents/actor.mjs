@@ -80,7 +80,7 @@ export class AVActor extends Actor {
    */
   prepareDerivedData() {
     const sys = this.system;
-    // const flags = actorData.flags.redage || {};
+    // const flags = actorData.flags.av || {};
 
     // switch (this.type) {
     //   case 'character':

@@ -32,9 +32,10 @@
         },
 
         "health": {
-          "value": 10,
+          "value": 1,
           "temp": 0,
-          "min": 0
+          "min": 0,
+          "max": 1
         },
         "speed": {
           "base": {

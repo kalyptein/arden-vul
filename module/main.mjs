@@ -116,7 +116,7 @@ async function createItemMacro(data, slot) {
 
   // Create the macro command
   args = args.join(", ");
-  const command = `game.redage.rollItemMacro(${args});`;
+  const command = `game.av.rollItemMacro(${args});`;
   let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
@@ -124,7 +124,7 @@ async function createItemMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: { "redage.itemMacro": true }
+      flags: { "av.itemMacro": true }
     });
   }
   game.user.assignHotbarMacro(macro, slot);

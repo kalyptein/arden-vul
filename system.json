@@ -3,7 +3,7 @@
   "id": "arden-vul",
   "title": "Arden-Vul",
   "description": "Arden-Vul game for Foundry VTT",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "minimumCoreVersion": "10",
   "compatibleCoreVersion": "13",
   "compatibility": {
@@ -34,8 +34,8 @@
           "path": "lang/en.json"
       }
   ],
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "grid.distance": 5,
+  "grid.units": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
   "url": "",
