@@ -82,17 +82,17 @@ export class AVActor extends Actor {
     const sys = this.system;
     // const flags = actorData.flags.av || {};
 
-    // switch (this.type) {
-    //   case 'character':
-    //     this._prepareCharacterData(sys);
-    //     break;
+    switch (this.type) {
+      case 'character':
+        this._prepareCharacterData(sys);
+        break;
     //   case 'npc':
     //     this._prepareNpcData(sys);
     //     break;
     //   case 'party':
     //     this._preparePartyData(sys);
     //     break;
-    // }
+    }
   }
 
   /**
@@ -102,13 +102,13 @@ export class AVActor extends Actor {
     if (this.type !== 'character') return;
 
     // Make modifications to data here. For example:
-    const items = this.system.items;
-    const tags = [...AV.getTags(items), ...sys.tags];
+    // const items = this.system.items;
+    // const tags = [...AV.getTags(items), ...sys.tags];
 
-    AV.STATS.forEach(stat => {
-      sys[stat].bonus = sys[stat].value - 10;
-      sys[stat].mod = modCalc(sys[stat].value);
-    })
+    // AV.STATS.forEach(stat => {
+    //   sys[stat].bonus = sys[stat].value - 10;
+    //   sys[stat].mod = modCalc(sys[stat].value);
+    // })
 
 
 
@@ -116,7 +116,7 @@ export class AVActor extends Actor {
     // data.characterLevel = this._calculateCharacterLevel(data.xp);
 
     // ish
-    sys.init = sys.dexterity.mod;  //- sys.fatigue.exhaustion - sys.load.modifier;
+    // sys.init = sys.dexterity.mod;  //- sys.fatigue.exhaustion - sys.load.modifier;
 
     // attack bonus
     // data.attackBonus = this._calculateAttackBonus(items);
@@ -124,7 +124,7 @@ export class AVActor extends Actor {
     // defense
 
     // hp
-    data.health.max = 10;
+    // data.health.max = 10;
     // data.health.max = this._calculateMaxHealth(items, data.vigor.mod, data.characterLevel);
     // data.health.value = Math.max(0, Math.min(data.health.max, data.health.value));
     // data.health.reserve = Math.max(0, Math.min(data.health.max, data.health.reserve));
@@ -241,16 +241,16 @@ export class AVActor extends Actor {
   //     .reduce((a,b) => a+b, 0);
   // }
 
-  _calculateCharacterLevel(xpValue) {
-    if (xpValue >= 130000) return 8 + Math.floor((xpValue - 130000) / 120000);
-    else if (xpValue >= 65000) return 7;
-    else if (xpValue >= 32000) return 6;
-    else if (xpValue >= 16000) return 5;
-    else if (xpValue >= 8000) return 4;
-    else if (xpValue >= 4000) return 3;
-    else if (xpValue >= 2000) return 2;
-    return 1;
-  }
+  // _calculateCharacterLevel(xpValue) {
+  //   if (xpValue >= 130000) return 8 + Math.floor((xpValue - 130000) / 120000);
+  //   else if (xpValue >= 65000) return 7;
+  //   else if (xpValue >= 32000) return 6;
+  //   else if (xpValue >= 16000) return 5;
+  //   else if (xpValue >= 8000) return 4;
+  //   else if (xpValue >= 4000) return 3;
+  //   else if (xpValue >= 2000) return 2;
+  //   return 1;
+  // }
 
   // _calculateAttackBonus(items) {
   //   let classes = items.filter((item) => { return AV.isType(item, ["class", "classCaster", "classFighter"]); });
@@ -335,10 +335,10 @@ export class AVActor extends Actor {
   _prepareNpcData() {
     if (this.type !== 'npc') return;
 
-    const items = this.items;
-    const tags = [...AV.getTags(items), ...sys.tags];
+    // const items = this.items;
+    // const tags = [...AV.getTags(items), ...sys.tags];
 
-    data.xp = (data.cr * data.cr) * 100;
+    // data.xp = (data.cr * data.cr) * 100;
   }
 
 
@@ -348,8 +348,8 @@ export class AVActor extends Actor {
   _preparePartyData() {
     if (this.type !== 'party') return;
   
-    const items = this.items;
-    const tags = [...AV.getTags(items), ...sys.tags];
+    // const items = this.items;
+    // const tags = [...AV.getTags(items), ...sys.tags];
 
     // clear out any accidental non-item items from the party
     // items.filter((item) => item.data.data.group !== "item").forEach(i => i.delete());
@@ -424,12 +424,12 @@ export class AVActor extends Actor {
     // }  
 }
 
-function modCalc(val) {
-    if (val <= 3) return Math.max(-1 * val, 0);
-    if (val <= 5) return -2;
-    if (val <= 8) return -1;
-    if (val <= 12) return 0;
-    if (val <= 15) return 1;
-    if (val <= 17) return 2;
-    return val-15;
-}
+// function modCalc(val) {
+//     if (val <= 3) return Math.max(-1 * val, 0);
+//     if (val <= 5) return -2;
+//     if (val <= 8) return -1;
+//     if (val <= 12) return 0;
+//     if (val <= 15) return 1;
+//     if (val <= 17) return 2;
+//     return val-15;
+// }
