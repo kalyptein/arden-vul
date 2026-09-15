@@ -1,52 +1,56 @@
 {
-  "name": "arden-vul",
-  "id": "arden-vul",
-  "title": "Arden-Vul",
-  "description": "Arden-Vul game for Foundry VTT",
-  "version": "1.0.6",
-  "minimumCoreVersion": "13",
-  "compatibleCoreVersion": "14",
-  "compatibility": {
-      "minimum": "13",
-      "verified": "14",
-      "maximum": "14"
-  },
-  "author": "Demiurge World Construction Unlimited",
-  "authors": [
-      {
-          "name": "Alex Baldwin",
-          "email": "noneya@fake.com",
-          "url": "https://fake.com"
-      }
-  ],
-  "esmodules": [
-      "module/main.mjs"
-  ],
-  "styles": [
-      "styles/styles.css"
-  ],
-  "scripts": [],
-  "packs": [],
-  "languages": [
-      {
-          "lang": "en",
-          "name": "English (UK)",
-          "path": "lang/en.json"
-      }
-  ],
-  "grid.distance": 5,
-  "grid.units": "ft",
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power",
-  "url": "",
-  "manifest": "",
-  "download": "",
-  "bugs": "",
-  "flags": {
+    "id": "arden-vul",
+    "title": "Arden-Vul",
+    "description": "Arden-Vul game for Foundry VTT",
+    "version": "1.0.7",
+    "authors": [
+        {
+            "name": "Demiurge World Construction Unlimited",
+            "email": "noneya@fake.com",
+            "url": "https://fake.com"
+        }
+    ],
+    "compatibility": {
+        "minimum": "14.350",
+        "verified": "14.356"
+    },
+
+    "main": "module/main.mjs",
+    "styles": [
+        "styles/styles.css"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+
+    "documentTypes": {
+        "Actor": {
+            "character": {},
+            "npc": {},
+            "party": {}
+        },
+        "Item": {
+            "item": {}
+        }
+    },
+    "grid": {
+        "distance": 5,
+        "units": "ft"
+    },
+    "packs": [],
+    "primaryTokenAttribute": "health",
+    "secondaryTokenAttribute": "power",
+    "manifest": "",
+    "download": "",
+    "bugs": "",
+    "flags": {
       "allowBugReporter": true
-  },
-  "relationships": {
-      "recommends": [
-      ]
-  }
+    },
+    "relationships": {
+        "recommends": [ ]
+    }
 }

@@ -6,15 +6,21 @@
  export const preloadHandlebarsTemplates = async function() {
   return foundry.applications.handlebars.loadTemplates([
 
+    "systems/arden-vul/templates/actor/actor-character-sheet.html",
+    "systems/arden-vul/templates/item/item-sheet.html",
+
+    "systems/arden-vul/templates/actor/parts/actor-items.html",
+    "systems/arden-vul/templates/item/parts/item-basics-sheet.html",
+
     // Actor sheet partials
 //    "systems/arden-vul/templates/actor/parts/actor-features.html",
-    "systems/arden-vul/templates/actor/parts/actor-items.html",
+    // "systems/arden-vul/templates/actor/parts/actor-items.html",
 //    "systems/arden-vul/templates/actor/parts/actor-spells.html",
 //    "systems/arden-vul/templates/actor/parts/actor-effects.html",
 //    "systems/arden-vul/templates/actor/parts/actor-statuses.html",
 
 		// Item sheet partials
-		"systems/arden-vul/templates/item/parts/item-basics-sheet.html",
+		// "systems/arden-vul/templates/item/parts/item-basics-sheet.html",
 		// "systems/arden-vul/templates/item/parts/item-qualities-sheet.html",
 		// "systems/arden-vul/templates/item/parts/item-class-core-sheet.html",
 
