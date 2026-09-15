@@ -44,8 +44,8 @@
     "packs": [],
     "primaryTokenAttribute": "health",
     "secondaryTokenAttribute": "power",
-    "manifest": "https://raw.githubusercontent.com/kalyptein/arden-vul/refs/heads/main/system.json",
-    "download": "https://github.com/archive/refs/heads/main.zip",
+    "manifest": "https://github.com/kalyptein/arden-vul/releases/download/v1.0.7/system.json",
+    "download": "https://github.com/kalyptein/arden-vul/archive/refs/tags/v1.0.7.zip",
     "bugs": "",
     "flags": {
       "allowBugReporter": true
