@@ -1,0 +1,317 @@
+{
+  "Actor": {
+    "types": ["character", "npc", "party"],
+
+    "templates": {
+
+      "base": {
+        "description": "",
+        "notes": "",
+        "tags": [],
+        "lock": false
+      },
+
+      "basePerson": {
+        "strength": {
+          "base": 10
+        },
+        "dexterity": {
+          "base": 10
+        },
+        "constitution": {
+          "base": 10
+        },
+        "intelligence": {
+          "base": 10
+        },
+        "wisdom": {
+          "base": 10
+        },
+        "charisma": {
+          "base": 10
+        },
+
+        "health": {
+          "value": 10,
+          "temp": 0,
+          "min": 0
+        },
+        "speed": {
+          "base": {
+            "max": 40
+          }
+        },
+
+        "description": "",
+        "notes": "",
+        "tags": [],
+        "lock": false
+      }
+    },
+
+    "character": {
+      "templates": [ "base", "basePerson" ],
+      "xp": 0
+    },
+
+    "npc": {
+      "templates": [ "base", "basePerson" ],
+      "level": 1
+    },
+
+    "party": {
+      "templates": [ "base" ],
+      "members": []
+    }
+  },
+
+
+  "Item": {
+    "types": [ 
+      "weapon", "armor", "item", 
+      "spell", "spellContainer",
+      "class", "classCaster", "classFighter",
+      "feature", "featureSkill", "featureRollable", "featureResource", "featureResourceRollable",
+      "status"
+    ],
+
+    "templates": {
+      "base": {
+        "group": "none",
+        "description": "",
+        "tags": [],
+        "container": {
+          "isContainer": false,
+          "expanded": false
+        },
+        "lock": false
+      },
+
+      "baseObject": {
+        "group": "item",
+        "quantity": {
+          "value": 1,
+          "min": 0,
+          "max": null
+        },
+        "unitValue": 0,
+        "unitWeight": 0,
+        "location": "None",
+        "isLoot": false,
+        "actions": []
+      },
+      "baseAction": {
+        "group": "action",
+        "total": {
+          "value": 0,
+          "min": 0,
+          "maxFormula": "0",
+          "recharge": ""
+        },
+        "formulae": []
+        
+      },
+      "baseStatus": {
+
+      },
+
+
+      "featureResource": {
+        "templates": [ "base", "baseFeature" ],
+        "resource": {
+          "value": 0,
+          "min": 0,
+          "maxFormula": "0",
+          "recharge": ""
+        }
+      },
+  
+
+
+      "baseClass": {
+        "group": "feat",
+        "classLevel": 0,
+        "attackBonusPerLevel": 0,
+        "startingHealth": 0,
+        "maxHealthPerLevel": 0,
+        "maxHealthPerLevelHeroic": 0
+      },
+      "baseFeature": {
+        "group": "feat",
+        "cost": 0,
+        "origin": ""
+      },
+      "baseStatus": {
+        "group": "status",
+        "progress": {
+          "value": 1,
+          "min": null,
+          "max": null
+        },
+        "origin": ""
+      }
+    },
+
+    "item": {
+      "templates": [ "base", "baseItem" ]
+    },
+
+
+
+
+
+
+    "weapon": {
+      "templates": [ "base", "baseItem" ],
+      "isProficient": false,
+      "isForceful": false,
+      "isFinesse": false,
+      "attackStat": "Vigor",
+      "proficiencyGroup": "",
+      "damageStat": "Vigor",
+      "damageDie": "",
+      "damageType": "",
+      "handedness": 0,
+      "range": "",
+      "qualities": "",
+      "attackBonus": "",
+      "damageBonus": ""
+    },
+    "armor": {
+      "templates": [ "base", "baseItem" ],
+      "isProficient": false,
+      "proficiencyGroup": "",
+      "defense": 0,
+      "maxDexterityBonus": 100,
+      "maxDexterityMod": 100,
+      "qualities": "",
+      "defenseBonus": 0
+    },
+
+    "class": {
+      "templates": [ "base", "baseClass" ]
+    },
+    "classCaster": {
+      "templates": [ "base", "baseClass" ],
+      "manaLevel": 0,
+      "isArcane": true,
+      "isHalfcaster": false,
+      "castingStat": "Spirit",
+      "spells": {
+        "primary": { "name": "Spells", "formula": "0" },
+        "secondary": { "name": "", "formula": "0" }
+      },
+      "panoply": {
+        "hand": false,
+        "body": false,
+        "token": false,
+        "order": false,
+        "sanctum": false,
+        "patron": false,
+        "transfiguration": false,
+        "familiar": false
+      }
+    },
+    "classFighter": {
+      "templates": [ "base", "baseClass" ],
+      "deedsNumber": 20,
+      "mastery": {
+        "brawling": {
+          "victories": 0,
+          "damage": false,
+          "brutal": false,
+          "cleave": false,
+          "supremacy": false
+        },
+        "great": {
+          "victories": 0,
+          "damage": false,
+          "brutal": false,
+          "cleave": false,
+          "supremacy": false
+        },
+        "missile": {
+          "victories": 0,
+          "damage": false,
+          "brutal": false,
+          "cleave": false,
+          "supremacy": false
+        },
+        "pole": {
+          "victories": 0,
+          "damage": false,
+          "brutal": false,
+          "cleave": false,
+          "supremacy": false
+        },
+        "single": {
+          "victories": 0,
+          "damage": false,
+          "brutal": false,
+          "cleave": false,
+          "supremacy": false
+        },
+        "thrown": {
+          "victories": 0,
+          "damage": false,
+          "brutal": false,
+          "cleave": false,
+          "supremacy": false
+        },
+        "exotic": {
+          "victories": 0,
+          "damage": false,
+          "brutal": false,
+          "cleave": false,
+          "supremacy": false
+        }
+      }
+    },
+
+
+    "spellContainer": {
+      "templates": [ "base" ],
+      "group": "magic",
+      "____spells": [],
+      "____spellUuids": [],
+      "origin": "",
+      "location": "Vessel",
+      "____effectBonus": "0",
+      "____magnitudeBonus": "0",
+      "size": 1
+    },
+
+    "spell": {
+      "templates": [ "base" ],
+      "group": "magic",
+
+      "castingTime": "1 action",
+      "duration": "Instant",
+      "range": "None",
+      "target": "Self",
+      "components": "None",
+
+      "effect": {
+        "hasRoll": false,
+        "targetStat": "Dexterity"
+      },
+      "magnitude": {
+        "hasRoll": false,
+        "formula": "0",
+        "type": ""
+      },
+
+      "powerMin": 0,
+      "powerMax": 5,
+      "origin": "",
+      "location": "Vessel",
+      "size": 1,
+
+      "____parent": null
+    },
+
+    "status": {
+      "templates": [ "base", "baseStatus" ]
+    }
+  }
+}

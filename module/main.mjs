@@ -10,132 +10,13 @@ import { AVItemSheet } from "./sheets/item-sheet.mjs";
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { AV } from "./helpers/config.mjs";
 
-const { SchemaField, StringField, BooleanField, ArrayField, NumberField, ObjectField } = foundry.data.fields;
-
-class BaseActorTemplate extends foundry.abstract.TypeDataModel {
-  static defineSchema() {
-    return {
-      description: new StringField({ initial: "" }),
-      notes: new StringField({ initial: "" }),
-      tags: new ArrayField(new StringField()),
-      lock: new BooleanField({ initial: false })
-    };
-  }
-}
-
-class BaseEntityTemplate extends BaseActorTemplate {
-  static defineSchema() {
-    const baseSchema = super.defineSchema();
-    return {
-      ...baseSchema,
-      strength: new SchemaField({ base: new NumberField({ initial: 10 }) }),
-      dexterity: new SchemaField({ base: new NumberField({ initial: 10 }) }),
-      constitution: new SchemaField({ base: new NumberField({ initial: 10 }) }),
-      intelligence: new SchemaField({ base: new NumberField({ initial: 10 }) }),
-      wisdom: new SchemaField({ base: new NumberField({ initial: 10 }) }),
-      charisma: new SchemaField({ base: new NumberField({ initial: 10 }) }),
-      
-      health: new SchemaField({
-        value: new NumberField({ initial: 1, min: 0 }),
-        temp: new NumberField({ initial: 0 }),
-        min: new NumberField({ initial: 0 }),
-        max: new NumberField({ initial: 1 })
-      }),
-      speed: new SchemaField({
-        base: new SchemaField({
-          min: new NumberField({ initial: 0 }),
-          max: new NumberField({ initial: 40 })
-        })
-      })
-    };
-  }
-}
-
-// ACTOR SUBTYPES
-class CharacterData extends BaseEntityTemplate {
-  static defineSchema() {
-    return {
-      ...super.defineSchema(),
-      xp: new NumberField({ initial: 0 })
-    };
-  }
-}
-
-class NpcData extends BaseEntityTemplate {
-  static defineSchema() {
-    return {
-      ...super.defineSchema(),
-      level: new NumberField({ initial: 1 })
-    };
-  }
-}
-
-class PartyData extends BaseActorTemplate {
-  static defineSchema() {
-    return {
-      ...super.defineSchema(),
-      members: new ArrayField(new StringField()) // Assuming IDs or references
-    };
-  }
-}
-
-class BaseItemTemplate extends foundry.abstract.TypeDataModel {
-  static defineSchema() {
-    return {
-      group: new StringField({ initial: "none" }),
-      description: new StringField({ initial: "" }),
-      tags: new ArrayField(new StringField()),
-      container: {
-        isContainer: new BooleanField({ initial: false }),
-        expanded: new BooleanField({ initial: false })
-      },
-      lock: new BooleanField({ initial: false })
-    };
-  }
-}
-
-class BaseObjectTemplate extends BaseItemTemplate {
-  static defineSchema() {
-    const baseSchema = super.defineSchema();
-    return {
-      ...baseSchema,
-      group: new StringField({ initial: "item" }),
-      quantity: {
-        "value": new SchemaField({ base: new NumberField({ initial: 1 }) }),
-        "min": new SchemaField({ base: new NumberField({ initial: 0 }) }),
-        "max": new SchemaField({ base: new NumberField({ initial: null }) }),
-      },
-      unitValue: new SchemaField({ base: new NumberField({ initial: 0 }) }),
-      unitWeight: new SchemaField({ base: new NumberField({ initial: 0 }) }),
-      location: new StringField({ initial: "None" }),
-      isLoot: new BooleanField({ initial: false })
-    };
-  }
-}
-
-// Item SUBTYPES
-class ItemData extends BaseObjectTemplate {
-  static defineSchema() {
-    return {
-      ...super.defineSchema(),
-    };
-  }
-}
-
-
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
-Hooks.once("init", async () => {
+Hooks.once('init', async function() {
 
   console.log(`Initializing System`);
-
-  CONFIG.Actor.dataModels.character = CharacterData;
-  CONFIG.Actor.dataModels.npc = NpcData;
-  CONFIG.Actor.dataModels.party = PartyData;
-
-  CONFIG.Item.dataModels.item = ItemData;
 
   // Add utility classes to the global game object so that they're more easily accessible in global contexts.
   game.av = {
@@ -162,9 +43,9 @@ Hooks.once("init", async () => {
   // CONFIG.ActiveEffect.documentClass = AVEffect;
 
   // Register sheet & item application classes
-  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv2.sheets.ActorSheet);
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
   foundry.documents.collections.Actors.registerSheet("arden-vul", AVActorSheet, { makeDefault: true });
-  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv2.sheets.ItemSheet);
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
   foundry.documents.collections.Items.registerSheet("arden-vul", AVItemSheet, { makeDefault: true });
 
   await preloadHandlebarsTemplates();

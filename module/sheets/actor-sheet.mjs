@@ -2,9 +2,9 @@ import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/ef
 import { AV } from "/systems/arden-vul/module/helpers/config.mjs";
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {foundry.appv2.sheets.ActorSheet}
+ * @extends {ActorSheet}
  */
-export class AVActorSheet extends foundry.appv2.sheets.ActorSheet {
+export class AVActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   /** @override */
   static get defaultOptions() {

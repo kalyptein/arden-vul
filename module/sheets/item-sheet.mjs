@@ -2,9 +2,9 @@ import { AV } from "../helpers/config.mjs";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
- * @extends {foundry.appv2.sheets.ItemSheet}
+ * @extends {ItemSheet}
  */
-export class AVItemSheet extends foundry.appv2.sheets.ItemSheet {
+export class AVItemSheet extends foundry.appv1.sheets.ItemSheet {
 
   /** @override */
   static get defaultOptions() {
