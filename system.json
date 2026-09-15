@@ -1,20 +1,17 @@
 {
-  "name": "arden-vul",
   "id": "arden-vul",
   "title": "Arden-Vul",
   "description": "Arden-Vul game for Foundry VTT",
-  "version": "1.0.4",
-  "minimumCoreVersion": "10",
-  "compatibleCoreVersion": "13",
+  "version": "1.0.8",
   "compatibility": {
-      "minimum": "10",
-      "verified": "13",
-      "maximum": "13"
+      "minimum": "11",
+      "verified": "14.362"
   },
-  "author": "Demiurge World Construction Unlimited",
+  "manifest": "https://raw.githubusercontent.com/kalyptein/arden-vul/refs/heads/main/system.json",
+  "download": "https://github.com/kalyptein/arden-vul/archive/refs/tags/v1.0.8.zip",
   "authors": [
       {
-          "name": "Alex Baldwin",
+          "name": "Demiurge World Construction Unlimited",
           "email": "noneya@fake.com",
           "url": "https://fake.com"
       }
@@ -34,13 +31,13 @@
           "path": "lang/en.json"
       }
   ],
-  "grid.distance": 5,
-  "grid.units": "ft",
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
   "url": "",
-  "manifest": "",
-  "download": "",
   "bugs": "",
   "flags": {
       "allowBugReporter": true
