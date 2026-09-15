@@ -162,18 +162,10 @@ Hooks.once("init", async () => {
   // CONFIG.ActiveEffect.documentClass = AVEffect;
 
   // Register sheet & item application classes
-  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv2.sheets.ActorSheet);
   foundry.documents.collections.Actors.registerSheet("arden-vul", AVActorSheet, { makeDefault: true });
-  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv2.sheets.ItemSheet);
   foundry.documents.collections.Items.registerSheet("arden-vul", AVItemSheet, { makeDefault: true });
-
-  await foundry.applications.handlebars.loadTemplates([
-    "systems/arden-vul/templates/actor/actor-character-sheet.html",
-    "systems/arden-vul/templates/item/item-sheet.html",
-
-    "systems/arden-vul/templates/actor/parts/actor-items.html",
-    "systems/arden-vul/templates/item/parts/item-basics-sheet.html",
-  ]);
 
   await preloadHandlebarsTemplates();
 });
