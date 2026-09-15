@@ -3,7 +3,7 @@
   "id": "arden-vul",
   "title": "Arden-Vul",
   "description": "Arden-Vul game for Foundry VTT",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "minimumCoreVersion": "10",
   "compatibleCoreVersion": "14",
   "compatibility": {
